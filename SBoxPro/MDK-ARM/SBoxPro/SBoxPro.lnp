@@ -1,0 +1,26 @@
+--cpu Cortex-M3
+"sboxpro\startup_stm32f103xe.o"
+"sboxpro\system_stm32f1xx.o"
+"sboxpro\stm32f1xx_hal_gpio.o"
+"sboxpro\stm32f1xx_hal_gpio_ex.o"
+"sboxpro\stm32f1xx_hal_tim_ex.o"
+"sboxpro\stm32f1xx_hal.o"
+"sboxpro\stm32f1xx_hal_rcc_ex.o"
+"sboxpro\stm32f1xx_hal_flash_ex.o"
+"sboxpro\stm32f1xx_hal_pwr.o"
+"sboxpro\stm32f1xx_hal_tim.o"
+"sboxpro\stm32f1xx_hal_flash.o"
+"sboxpro\stm32f1xx_hal_dma.o"
+"sboxpro\stm32f1xx_hal_rcc.o"
+"sboxpro\stm32f1xx_hal_cortex.o"
+"sboxpro\stm32f1xx_hal_can.o"
+"sboxpro\can.o"
+"sboxpro\stm32f1xx_hal_msp.o"
+"sboxpro\tim.o"
+"sboxpro\gpio.o"
+"sboxpro\stm32f1xx_it.o"
+"sboxpro\main.o"
+--library_type=microlib --strict --scatter "SBoxPro\SBoxPro.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "SBoxPro.map" -o SBoxPro\SBoxPro.axf

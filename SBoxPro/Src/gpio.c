@@ -690,11 +690,12 @@ LOCKERRORCODE BSP_LOCKCheckCtrlBuffer(void)
 		{
 			CtrlBuffer[i][4] = 0;
 			BSP_LOCKWriteCtrlPin(i,CtrlOpen);
+			//返回状态，不加编号信息信息
 			IDdata[0] = CtrlBuffer[i][0];
 			IDdata[1] = CtrlBuffer[i][1];
 			IDdata[2] = CtrlBuffer[i][2];
 			IDdata[3] = CtrlBuffer[i][3];
-			IDdata[4] = i;
+			IDdata[4] = CtrlBuffer[i][4];
 			
 			CanWriteData(CANID, IDdata, 5);
 		}

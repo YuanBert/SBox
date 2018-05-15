@@ -359,7 +359,16 @@ LOCKERRORCODE BSP_LOCKSendGoodsChangedMessage(void)
 			messageData[3] = 0;
 			messageData[4] = i;
 			messageData[5] = LockPinsStateChangedBuffer[i][0];
-			messageData[6] = LockGoodsStateChangedBuffer[i][0];
+			/* 如果有物体在储物柜则上报逻辑1，否则返回0 */
+			if(0 == LockGoodsStateChangedBuffer[i][0])
+			{
+				messageData[6] = 1;
+			}
+			else
+			{
+				messageData[6] = 0;
+			}
+			
 			CanWriteData(CANID,messageData,7);
 			//state = BSP_CanSendDatas(CanId, i, LockPinsStateChangedBuffer[i][0], LockGoodsStateChangedBuffer[i][0]);
 			LockGoodsStateChangedBuffer[i][1] = 0;

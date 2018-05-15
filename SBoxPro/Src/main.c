@@ -157,6 +157,7 @@ int main(void)
 	{
 		tim5Flag = 0;
 				/*  ªÒ»°ID*/
+		CANID = 0;
 		if(GPIO_PIN_SET == GetAddrBit3Val)
 		{
 			CANID |= 0x08;

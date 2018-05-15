@@ -3,7 +3,7 @@
 <title>Static Call Graph - [SBoxPro\SBoxPro.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image SBoxPro\SBoxPro.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed May 02 15:30:25 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue May 15 16:22:44 2018
 <BR><P>
 <H3>Maximum Stack Usage =        144 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -326,8 +326,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[51]"></a>BSP_LOCKSendGoodsChangedMessage</STRONG> (Thumb, 84 bytes, Stack size 40 bytes, gpio.o(i.BSP_LOCKSendGoodsChangedMessage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = BSP_LOCKSendGoodsChangedMessage &rArr; CanWriteData &rArr; HAL_CAN_Transmit
+<P><STRONG><a name="[51]"></a>BSP_LOCKSendGoodsChangedMessage</STRONG> (Thumb, 96 bytes, Stack size 48 bytes, gpio.o(i.BSP_LOCKSendGoodsChangedMessage))
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = BSP_LOCKSendGoodsChangedMessage &rArr; CanWriteData &rArr; HAL_CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CanWriteData
 </UL>
@@ -835,7 +835,7 @@ Global Symbols
 
 <P><STRONG><a name="[97]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 252 bytes, Stack size 8 bytes, main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 254 bytes, Stack size 8 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority

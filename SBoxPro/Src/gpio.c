@@ -526,6 +526,9 @@ LOCKERRORCODE BSP_LOCKSendPinsChangedMessage(void)
 LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
 {
 	LOCKERRORCODE state = LOCK_OK;
+	uint8_t LockStatus;
+	uint8_t IDdata[5];
+	
 	if(nBoxNumber > 21)
 	{
 		state = LOCK_ERROR;
@@ -538,131 +541,160 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
 			HAL_GPIO_WritePin(LOCK_CTRL1_GPIO_Port,LOCK_CTRL1_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL1_GPIO_Port,LOCK_CTRL1_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins1State;
 			break;
 			
 		case 1:
 			HAL_GPIO_WritePin(LOCK_CTRL2_GPIO_Port,LOCK_CTRL2_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL2_GPIO_Port,LOCK_CTRL2_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins2State;
 			break;
 			
 		case 2:
 			HAL_GPIO_WritePin(LOCK_CTRL3_GPIO_Port,LOCK_CTRL3_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL3_GPIO_Port,LOCK_CTRL3_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins3State;
 			break;
 		case 3:
 			HAL_GPIO_WritePin(LOCK_CTRL4_GPIO_Port,LOCK_CTRL4_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL4_GPIO_Port,LOCK_CTRL4_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins4State;
 			break;
 			
 		case 4:
 			HAL_GPIO_WritePin(LOCK_CTRL5_GPIO_Port,LOCK_CTRL5_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL5_GPIO_Port,LOCK_CTRL5_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins5State;
 			break;
 			
 		case 5:
 			HAL_GPIO_WritePin(LOCK_CTRL6_GPIO_Port,LOCK_CTRL6_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL6_GPIO_Port,LOCK_CTRL6_Pin,GPIO_PIN_SET);	
+			LockStatus = GetLockPins6State;
 			break;		
 		case 6:
 			HAL_GPIO_WritePin(LOCK_CTRL7_GPIO_Port,LOCK_CTRL7_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL7_GPIO_Port,LOCK_CTRL7_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins7State;
 			break;
 			
 		case 7:
 			HAL_GPIO_WritePin(LOCK_CTRL8_GPIO_Port,LOCK_CTRL8_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL8_GPIO_Port,LOCK_CTRL8_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins8State;
 			break;
 			
 		case 8:
 			HAL_GPIO_WritePin(LOCK_CTRL9_GPIO_Port,LOCK_CTRL9_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL9_GPIO_Port,LOCK_CTRL9_Pin,GPIO_PIN_RESET);
+			LockStatus = GetLockPins9State;
 			break;
 		case 9:
 			HAL_GPIO_WritePin(LOCK_CTRL10_GPIO_Port,LOCK_CTRL10_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL10_GPIO_Port,LOCK_CTRL10_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins10State;
 			break;
 		case 10:
 			HAL_GPIO_WritePin(LOCK_CTRL11_GPIO_Port,LOCK_CTRL11_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL11_GPIO_Port,LOCK_CTRL11_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins11State;
 			break;
 			
 		case 11:
 			HAL_GPIO_WritePin(LOCK_CTRL12_GPIO_Port,LOCK_CTRL12_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL12_GPIO_Port,LOCK_CTRL12_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins12State;
 			break;
 			
 		case 12:
 			HAL_GPIO_WritePin(LOCK_CTRL13_GPIO_Port,LOCK_CTRL13_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL13_GPIO_Port,LOCK_CTRL13_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins13State;
 			break;
 		case 13:
 			HAL_GPIO_WritePin(LOCK_CTRL14_GPIO_Port,LOCK_CTRL14_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL14_GPIO_Port,LOCK_CTRL14_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins14State;
 			break;
 			
 		case 14:
 			HAL_GPIO_WritePin(LOCK_CTRL15_GPIO_Port,LOCK_CTRL15_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL15_GPIO_Port,LOCK_CTRL15_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins15State;
 			break;
 			
 		case 15:
 			HAL_GPIO_WritePin(LOCK_CTRL16_GPIO_Port,LOCK_CTRL16_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL16_GPIO_Port,LOCK_CTRL16_Pin,GPIO_PIN_SET);	
+			LockStatus = GetLockPins16State;
 			break;		
 		case 16:
 			HAL_GPIO_WritePin(LOCK_CTRL17_GPIO_Port,LOCK_CTRL17_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL17_GPIO_Port,LOCK_CTRL17_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins17State;
 			break;
 			
 		case 17:
 			HAL_GPIO_WritePin(LOCK_CTRL18_GPIO_Port,LOCK_CTRL18_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL18_GPIO_Port,LOCK_CTRL18_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins18State;
 			break;
 			
 		case 18:
 			HAL_GPIO_WritePin(LOCK_CTRL19_GPIO_Port,LOCK_CTRL19_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL19_GPIO_Port,LOCK_CTRL19_Pin,GPIO_PIN_RESET);
+			LockStatus = GetLockPins19State;
 			break;
 		case 19:
 			HAL_GPIO_WritePin(LOCK_CTRL20_GPIO_Port,LOCK_CTRL20_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL20_GPIO_Port,LOCK_CTRL20_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins20State;
 			break;			
 		case 20:
 			HAL_GPIO_WritePin(LOCK_CTRL21_GPIO_Port,LOCK_CTRL21_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL21_GPIO_Port,LOCK_CTRL21_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins21State;
 			break;
 				
 		case 21:
 			HAL_GPIO_WritePin(LOCK_CTRL22_GPIO_Port,LOCK_CTRL22_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL22_GPIO_Port,LOCK_CTRL22_Pin,GPIO_PIN_SET);
+			LockStatus = GetLockPins22State;
 			break;
 
 		default:
 			
 			break;
 		}
-
+			IDdata[0] = CtrlBuffer[nBoxNumber][0];
+			IDdata[1] = CtrlBuffer[nBoxNumber][1];
+			IDdata[2] = CtrlBuffer[nBoxNumber][2];
+			IDdata[3] = CtrlBuffer[nBoxNumber][3];
+			IDdata[4] = LockStatus;
+			//IDdata[4] = CtrlBuffer[nBoxNumber][4];
+			
+			CanWriteData(CANID, IDdata, 5);
 	return state;
 }
 
@@ -687,7 +719,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlBuffer(uint8_t ID0,uint8_t ID1,uint8_t ID2, uint8
 LOCKERRORCODE BSP_LOCKCheckCtrlBuffer(void)
 {
 	LOCKERRORCODE state = LOCK_OK;
-	uint8_t IDdata[5];
+//	uint8_t IDdata[5];
 	if(0 == NeedHandBufferFlag)
 	{
 		return state;
@@ -700,13 +732,13 @@ LOCKERRORCODE BSP_LOCKCheckCtrlBuffer(void)
 			CtrlBuffer[i][4] = 0;
 			BSP_LOCKWriteCtrlPin(i,CtrlOpen);
 			//返回状态，不加编号信息信息
-			IDdata[0] = CtrlBuffer[i][0];
-			IDdata[1] = CtrlBuffer[i][1];
-			IDdata[2] = CtrlBuffer[i][2];
-			IDdata[3] = CtrlBuffer[i][3];
-			IDdata[4] = CtrlBuffer[i][4];
-			
-			CanWriteData(CANID, IDdata, 5);
+//			IDdata[0] = CtrlBuffer[i][0];
+//			IDdata[1] = CtrlBuffer[i][1];
+//			IDdata[2] = CtrlBuffer[i][2];
+//			IDdata[3] = CtrlBuffer[i][3];
+//			IDdata[4] = CtrlBuffer[i][4];
+//			
+//			CanWriteData(CANID, IDdata, 5);
 		}
 		
 	}

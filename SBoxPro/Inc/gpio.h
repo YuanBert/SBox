@@ -53,6 +53,8 @@
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN Private defines */
+//
+#define LockOpenPinStatus		
 #define GetLockGoods1State 		HAL_GPIO_ReadPin(LOCK_GOODS_1_GPIO_Port, LOCK_GOODS_1_Pin)
 #define GetLockGoods2State 		HAL_GPIO_ReadPin(LOCK_GOODS_2_GPIO_Port, LOCK_GOODS_2_Pin)
 #define GetLockGoods3State 		HAL_GPIO_ReadPin(LOCK_GOODS_3_GPIO_Port, LOCK_GOODS_3_Pin)

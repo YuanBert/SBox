@@ -3,11 +3,11 @@
 <title>Static Call Graph - [SBoxPro\SBoxPro.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image SBoxPro\SBoxPro.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue May 15 16:22:44 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed May 16 16:12:32 2018
 <BR><P>
-<H3>Maximum Stack Usage =        144 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        168 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority
+main &rArr; BSP_LOCKCheckCtrlBuffer &rArr; BSP_LOCKWriteCtrlPin &rArr; CanWriteData &rArr; HAL_CAN_Transmit
 <P>
 <H3>
 Mutually Recursive functions
@@ -309,27 +309,26 @@ Global Symbols
 
 <P><STRONG><a name="[94]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
-<P><STRONG><a name="[4c]"></a>BSP_LOCKCheckCtrlBuffer</STRONG> (Thumb, 116 bytes, Stack size 40 bytes, gpio.o(i.BSP_LOCKCheckCtrlBuffer))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = BSP_LOCKCheckCtrlBuffer &rArr; CanWriteData &rArr; HAL_CAN_Transmit
+<P><STRONG><a name="[4c]"></a>BSP_LOCKCheckCtrlBuffer</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, gpio.o(i.BSP_LOCKCheckCtrlBuffer))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = BSP_LOCKCheckCtrlBuffer &rArr; BSP_LOCKWriteCtrlPin &rArr; CanWriteData &rArr; HAL_CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKWriteCtrlPin
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CanWriteData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[4f]"></a>BSP_LOCKInit</STRONG> (Thumb, 258 bytes, Stack size 40 bytes, gpio.o(i.BSP_LOCKInit))
+<P><STRONG><a name="[4e]"></a>BSP_LOCKInit</STRONG> (Thumb, 258 bytes, Stack size 40 bytes, gpio.o(i.BSP_LOCKInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = BSP_LOCKInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[51]"></a>BSP_LOCKSendGoodsChangedMessage</STRONG> (Thumb, 96 bytes, Stack size 48 bytes, gpio.o(i.BSP_LOCKSendGoodsChangedMessage))
+<P><STRONG><a name="[50]"></a>BSP_LOCKSendGoodsChangedMessage</STRONG> (Thumb, 96 bytes, Stack size 48 bytes, gpio.o(i.BSP_LOCKSendGoodsChangedMessage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = BSP_LOCKSendGoodsChangedMessage &rArr; CanWriteData &rArr; HAL_CAN_Transmit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CanWriteData
+<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CanWriteData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -337,7 +336,7 @@ Global Symbols
 <P><STRONG><a name="[52]"></a>BSP_LOCKSendPinsChangedMessage</STRONG> (Thumb, 84 bytes, Stack size 40 bytes, gpio.o(i.BSP_LOCKSendPinsChangedMessage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = BSP_LOCKSendPinsChangedMessage &rArr; CanWriteData &rArr; HAL_CAN_Transmit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CanWriteData
+<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CanWriteData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -364,11 +363,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[4d]"></a>BSP_LOCKWriteCtrlPin</STRONG> (Thumb, 588 bytes, Stack size 40 bytes, gpio.o(i.BSP_LOCKWriteCtrlPin))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = BSP_LOCKWriteCtrlPin &rArr; HAL_Delay
+<P><STRONG><a name="[4d]"></a>BSP_LOCKWriteCtrlPin</STRONG> (Thumb, 860 bytes, Stack size 56 bytes, gpio.o(i.BSP_LOCKWriteCtrlPin))
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = BSP_LOCKWriteCtrlPin &rArr; CanWriteData &rArr; HAL_CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CanWriteData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKCheckCtrlBuffer
 </UL>
@@ -380,7 +381,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xe.o(RESET)
 </UL>
-<P><STRONG><a name="[57]"></a>CANFilterConfig</STRONG> (Thumb, 50 bytes, Stack size 48 bytes, can.o(i.CANFilterConfig))
+<P><STRONG><a name="[57]"></a>CANFilterConfig</STRONG> (Thumb, 68 bytes, Stack size 48 bytes, can.o(i.CANFilterConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = CANFilterConfig &rArr; HAL_CAN_ConfigFilter
 </UL>
 <BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_ConfigFilter
@@ -388,7 +389,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CANInit
 </UL>
 
-<P><STRONG><a name="[59]"></a>CANInit</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, can.o(i.CANInit))
+<P><STRONG><a name="[59]"></a>CANInit</STRONG> (Thumb, 106 bytes, Stack size 16 bytes, can.o(i.CANInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = CANInit &rArr; CANFilterConfig &rArr; HAL_CAN_ConfigFilter
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
@@ -397,14 +398,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[4e]"></a>CanWriteData</STRONG> (Thumb, 48 bytes, Stack size 40 bytes, can.o(i.CanWriteData))
+<P><STRONG><a name="[51]"></a>CanWriteData</STRONG> (Thumb, 48 bytes, Stack size 40 bytes, can.o(i.CanWriteData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = CanWriteData &rArr; HAL_CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_Transmit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKSendPinsChangedMessage
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKSendGoodsChangedMessage
-<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKCheckCtrlBuffer
+<BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKWriteCtrlPin
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKSendPinsChangedMessage
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKSendGoodsChangedMessage
 </UL>
 
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.DebugMon_Handler))
@@ -464,7 +465,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CanWriteData
+<BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CanWriteData
 </UL>
 
 <P><STRONG><a name="[5e]"></a>HAL_CAN_TxCpltCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_hal_can.o(i.HAL_CAN_TxCpltCallback))
@@ -487,16 +488,16 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[54]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_ReadPin))
-<BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR><BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKWriteCtrlPin
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKUpdateOfLockPinsState
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKUpdateOfGoodsState
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CANInit
 </UL>
 
-<P><STRONG><a name="[50]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin))
+<P><STRONG><a name="[4f]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin))
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKWriteCtrlPin
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKInit
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKInit
 </UL>
 
 <P><STRONG><a name="[62]"></a>HAL_GetTick</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_GetTick))
@@ -717,7 +718,7 @@ Global Symbols
 <P><STRONG><a name="[83]"></a>MX_GPIO_Init</STRONG> (Thumb, 346 bytes, Stack size 56 bytes, gpio.o(i.MX_GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = MX_GPIO_Init &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -835,12 +836,11 @@ Global Symbols
 
 <P><STRONG><a name="[97]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 254 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 168 bytes, Stack size 8 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = main &rArr; BSP_LOCKCheckCtrlBuffer &rArr; BSP_LOCKWriteCtrlPin &rArr; CanWriteData &rArr; HAL_CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
@@ -848,8 +848,8 @@ Global Symbols
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKUpdateOfLockPinsState
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKUpdateOfGoodsState
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKSendPinsChangedMessage
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKSendGoodsChangedMessage
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKInit
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKSendGoodsChangedMessage
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKInit
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKCheckCtrlBuffer
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM5_Init
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init

@@ -157,23 +157,23 @@ int main(void)
 	{
 		tim5Flag = 0;
 				/*  ªÒ»°ID*/
-		CANID = 0;
-		if(GPIO_PIN_SET == GetAddrBit3Val)
-		{
-			CANID |= 0x08;
-		}
-		if(GPIO_PIN_SET == GetAddrBit2Val)
-		{
-			CANID |= 0x04;
-		}
-		if(GPIO_PIN_SET == GetAddrBit1Val)
-		{
-			CANID |= 0x02;
-		}
-		if(GPIO_PIN_SET == GetAddrBit0Val)
-		{
-			CANID |= 0x01;
-		}
+//		CANID = 0;
+//		if(GPIO_PIN_SET == GetAddrBit3Val)
+//		{
+//			CANID |= 0x08;
+//		}
+//		if(GPIO_PIN_SET == GetAddrBit2Val)
+//		{
+//			CANID |= 0x04;
+//		}
+//		if(GPIO_PIN_SET == GetAddrBit1Val)
+//		{
+//			CANID |= 0x02;
+//		}
+//		if(GPIO_PIN_SET == GetAddrBit0Val)
+//		{
+//			CANID |= 0x01;
+//		}
 	}  
   }
   /* USER CODE END 3 */

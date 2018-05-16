@@ -134,9 +134,7 @@ void HAL_CAN_MspDeInit(CAN_HandleTypeDef* canHandle)
 void CANInit(void)
 {
 	hcan.pRxMsg = &RxMessage;
-	CANFilterConfig();
-	
-	/*  获取ID*/
+		/*  获取ID*/
 	CANID = 0;
 	if(GPIO_PIN_SET == GetAddrBit3Val)
 	{
@@ -154,20 +152,33 @@ void CANInit(void)
 	{
 		CANID |= 0x01;
 	}
+	
+	CANFilterConfig();
 
 }
 
 void CANFilterConfig(void)
 {
 	CAN_FilterConfTypeDef sFilterConfig;
+	uint32_t ExtId = 0x1800F001;
 	
-  	sFilterConfig.FilterNumber = 0;
-  	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
-  	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
-  	sFilterConfig.FilterIdHigh = 0x0000;
-  	sFilterConfig.FilterIdLow = 0x0000;
-  	sFilterConfig.FilterMaskIdHigh = 0x0000;
-  	sFilterConfig.FilterMaskIdLow = 0x0000;
+	sFilterConfig.FilterNumber = 0;
+	
+//	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
+//	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+//	sFilterConfig.FilterIdHigh = 0x0000;
+//	sFilterConfig.FilterIdLow = 0x0000;
+//	sFilterConfig.FilterMaskIdHigh = 0x0000;
+//	sFilterConfig.FilterMaskIdLow = 0x0000;
+	
+	sFilterConfig.FilterMode = CAN_FILTERMODE_IDLIST;
+	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+
+  	sFilterConfig.FilterIdHigh = CANID << 5;
+  	sFilterConfig.FilterIdLow = 0|CAN_ID_STD;	//设置IDE位为0
+  	sFilterConfig.FilterMaskIdHigh = ((ExtId << 3)>>16)&0xFFFF;
+  	sFilterConfig.FilterMaskIdLow = ((ExtId << 3)&0xFFFF) | CAN_ID_EXT;
+	sFilterConfig.BankNumber = 14;
   	sFilterConfig.FilterFIFOAssignment = 0;
   	sFilterConfig.FilterActivation = ENABLE;
 	__HAL_CAN_ENABLE_IT(&hcan,CAN_IT_FMP0);

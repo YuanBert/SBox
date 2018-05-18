@@ -527,174 +527,304 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
 {
 	LOCKERRORCODE state = LOCK_OK;
 	uint8_t LockStatus;
-	uint8_t IDdata[5];
+	uint8_t IDdata[7];
 	
 	if(nBoxNumber > 21)
 	{
 		state = LOCK_ERROR;
 		return state;
 	}
-
+    
+    IDdata[0] = 0;//CtrlBuffer[nBoxNumber][0];
+	IDdata[1] = 0;//CtrlBuffer[nBoxNumber][1];
+	IDdata[2] = 0;//CtrlBuffer[nBoxNumber][2];
+	IDdata[3] = 0;//CtrlBuffer[nBoxNumber][3];
+    IDdata[4] = nBoxNumber;
+    
 	switch (nBoxNumber)
 		{
 		case 0:
+            LockStatus = GetLockPins1State;
 			HAL_GPIO_WritePin(LOCK_CTRL1_GPIO_Port,LOCK_CTRL1_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL1_GPIO_Port,LOCK_CTRL1_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins1State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods1State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 1:
+            LockStatus = GetLockPins2State;
 			HAL_GPIO_WritePin(LOCK_CTRL2_GPIO_Port,LOCK_CTRL2_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL2_GPIO_Port,LOCK_CTRL2_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins2State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods2State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 2:
+            LockStatus = GetLockPins3State;
 			HAL_GPIO_WritePin(LOCK_CTRL3_GPIO_Port,LOCK_CTRL3_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL3_GPIO_Port,LOCK_CTRL3_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins3State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods3State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 		case 3:
+            LockStatus = GetLockPins4State;
 			HAL_GPIO_WritePin(LOCK_CTRL4_GPIO_Port,LOCK_CTRL4_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL4_GPIO_Port,LOCK_CTRL4_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins4State;
+            if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods4State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 4:
+            LockStatus = GetLockPins5State;
 			HAL_GPIO_WritePin(LOCK_CTRL5_GPIO_Port,LOCK_CTRL5_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
-			HAL_GPIO_WritePin(LOCK_CTRL5_GPIO_Port,LOCK_CTRL5_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins5State;
+			HAL_GPIO_WritePin(LOCK_CTRL5_GPIO_Port,LOCK_CTRL5_Pin,GPIO_PIN_SET);  
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods5State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 5:
+            LockStatus = GetLockPins6State;
 			HAL_GPIO_WritePin(LOCK_CTRL6_GPIO_Port,LOCK_CTRL6_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL6_GPIO_Port,LOCK_CTRL6_Pin,GPIO_PIN_SET);	
-			LockStatus = GetLockPins6State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods6State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;		
 		case 6:
+            LockStatus = GetLockPins7State;
 			HAL_GPIO_WritePin(LOCK_CTRL7_GPIO_Port,LOCK_CTRL7_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL7_GPIO_Port,LOCK_CTRL7_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins7State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods7State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 7:
+            LockStatus = GetLockPins8State;
 			HAL_GPIO_WritePin(LOCK_CTRL8_GPIO_Port,LOCK_CTRL8_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL8_GPIO_Port,LOCK_CTRL8_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins8State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods8State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 8:
+            LockStatus = GetLockPins9State;
 			HAL_GPIO_WritePin(LOCK_CTRL9_GPIO_Port,LOCK_CTRL9_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL9_GPIO_Port,LOCK_CTRL9_Pin,GPIO_PIN_RESET);
-			LockStatus = GetLockPins9State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods9State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 		case 9:
+            LockStatus = GetLockPins10State;
 			HAL_GPIO_WritePin(LOCK_CTRL10_GPIO_Port,LOCK_CTRL10_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL10_GPIO_Port,LOCK_CTRL10_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins10State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods10State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 		case 10:
+            LockStatus = GetLockPins11State;
 			HAL_GPIO_WritePin(LOCK_CTRL11_GPIO_Port,LOCK_CTRL11_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL11_GPIO_Port,LOCK_CTRL11_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins11State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods11State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 11:
+            LockStatus = GetLockPins12State;
 			HAL_GPIO_WritePin(LOCK_CTRL12_GPIO_Port,LOCK_CTRL12_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL12_GPIO_Port,LOCK_CTRL12_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins12State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods12State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 12:
+            LockStatus = GetLockPins13State;
 			HAL_GPIO_WritePin(LOCK_CTRL13_GPIO_Port,LOCK_CTRL13_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL13_GPIO_Port,LOCK_CTRL13_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins13State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods13State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 		case 13:
+            LockStatus = GetLockPins14State;
 			HAL_GPIO_WritePin(LOCK_CTRL14_GPIO_Port,LOCK_CTRL14_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL14_GPIO_Port,LOCK_CTRL14_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins14State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods14State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 14:
+            LockStatus = GetLockPins15State;
 			HAL_GPIO_WritePin(LOCK_CTRL15_GPIO_Port,LOCK_CTRL15_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL15_GPIO_Port,LOCK_CTRL15_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins15State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods15State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 15:
+            LockStatus = GetLockPins16State;
 			HAL_GPIO_WritePin(LOCK_CTRL16_GPIO_Port,LOCK_CTRL16_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL16_GPIO_Port,LOCK_CTRL16_Pin,GPIO_PIN_SET);	
-			LockStatus = GetLockPins16State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods16State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;		
 		case 16:
+            LockStatus = GetLockPins17State;
 			HAL_GPIO_WritePin(LOCK_CTRL17_GPIO_Port,LOCK_CTRL17_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL17_GPIO_Port,LOCK_CTRL17_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins17State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods17State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 17:
+            LockStatus = GetLockPins18State;
 			HAL_GPIO_WritePin(LOCK_CTRL18_GPIO_Port,LOCK_CTRL18_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL18_GPIO_Port,LOCK_CTRL18_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins18State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods18State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 			
 		case 18:
+            LockStatus = GetLockPins19State;
 			HAL_GPIO_WritePin(LOCK_CTRL19_GPIO_Port,LOCK_CTRL19_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL19_GPIO_Port,LOCK_CTRL19_Pin,GPIO_PIN_RESET);
-			LockStatus = GetLockPins19State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods19State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 		case 19:
+            LockStatus = GetLockPins20State;
 			HAL_GPIO_WritePin(LOCK_CTRL20_GPIO_Port,LOCK_CTRL20_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL20_GPIO_Port,LOCK_CTRL20_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins20State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods20State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;			
 		case 20:
+            LockStatus = GetLockPins21State;
 			HAL_GPIO_WritePin(LOCK_CTRL21_GPIO_Port,LOCK_CTRL21_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL21_GPIO_Port,LOCK_CTRL21_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins21State;
+			if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods21State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 				
 		case 21:
+            LockStatus = GetLockPins22State;
 			HAL_GPIO_WritePin(LOCK_CTRL22_GPIO_Port,LOCK_CTRL22_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL22_GPIO_Port,LOCK_CTRL22_Pin,GPIO_PIN_SET);
-			LockStatus = GetLockPins22State;
+            if(1 == LockStatus)
+            {
+                IDdata[5] = LockStatus;
+                IDdata[6] = GetLockGoods22State;
+                CanWriteData(CANID, IDdata, 7);
+            }
 			break;
 
 		default:
 			
 			break;
 		}
-			IDdata[0] = CtrlBuffer[nBoxNumber][0];
-			IDdata[1] = CtrlBuffer[nBoxNumber][1];
-			IDdata[2] = CtrlBuffer[nBoxNumber][2];
-			IDdata[3] = CtrlBuffer[nBoxNumber][3];
-			IDdata[4] = LockStatus;
-			//IDdata[4] = CtrlBuffer[nBoxNumber][4];
-			
-			CanWriteData(CANID, IDdata, 5);
 	return state;
 }
 

@@ -2,7 +2,7 @@ sboxpro\system_stm32f1xx.o: ..//Src/system_stm32f1xx.c
 sboxpro\system_stm32f1xx.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 sboxpro\system_stm32f1xx.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h
 sboxpro\system_stm32f1xx.o: ../Drivers/CMSIS/Include/core_cm3.h
-sboxpro\system_stm32f1xx.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+sboxpro\system_stm32f1xx.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 sboxpro\system_stm32f1xx.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 sboxpro\system_stm32f1xx.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 sboxpro\system_stm32f1xx.o: ../Drivers/CMSIS/Include/core_cmFunc.h
@@ -13,7 +13,7 @@ sboxpro\system_stm32f1xx.o: ../Inc/main.h
 sboxpro\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
 sboxpro\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 sboxpro\system_stm32f1xx.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
-sboxpro\system_stm32f1xx.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+sboxpro\system_stm32f1xx.o: d:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 sboxpro\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 sboxpro\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 sboxpro\system_stm32f1xx.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h

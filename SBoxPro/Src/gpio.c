@@ -224,94 +224,94 @@ LOCKERRORCODE BSP_LOCKUpdateOfGoodsState()
 		LockGoodsStateChangedBuffer[0][1] = 1;
 	}
 	
-	if(LockGoodsStateChangedBuffer[1][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[1][0] != GetLockGoods2State)
 	{
 		LockGoodsStateChangedBuffer[1][1] = 1;
 	}
 
-	if(LockGoodsStateChangedBuffer[2][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[2][0] != GetLockGoods3State)
 	{
 		LockGoodsStateChangedBuffer[2][1] = 1;
 	}
 
-	if(LockGoodsStateChangedBuffer[3][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[3][0] != GetLockGoods4State)
 	{
 		LockGoodsStateChangedBuffer[3][1] = 1;
 	}
 
-	if(LockGoodsStateChangedBuffer[4][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[4][0] != GetLockGoods5State)
 	{
 		LockGoodsStateChangedBuffer[4][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[5][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[5][0] != GetLockGoods6State)
 	{
 		LockGoodsStateChangedBuffer[5][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[6][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[6][0] != GetLockGoods7State)
 	{
 		LockGoodsStateChangedBuffer[6][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[7][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[7][0] != GetLockGoods8State)
 	{
 		LockGoodsStateChangedBuffer[7][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[8][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[8][0] != GetLockGoods9State)
 	{
 		LockGoodsStateChangedBuffer[8][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[9][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[9][0] != GetLockGoods10State)
 	{
 		LockGoodsStateChangedBuffer[9][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[10][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[10][0] != GetLockGoods11State)
 	{
 		LockGoodsStateChangedBuffer[10][1] = 1;
 	}
 	
-	if(LockGoodsStateChangedBuffer[11][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[11][0] != GetLockGoods12State)
 	{
 		LockGoodsStateChangedBuffer[11][1] = 1;
 	}
 
-	if(LockGoodsStateChangedBuffer[12][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[12][0] != GetLockGoods13State)
 	{
 		LockGoodsStateChangedBuffer[12][1] = 1;
 	}
 
-	if(LockGoodsStateChangedBuffer[13][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[13][0] != GetLockGoods14State)
 	{
 		LockGoodsStateChangedBuffer[13][1] = 1;
 	}
 
-	if(LockGoodsStateChangedBuffer[14][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[14][0] != GetLockGoods15State)
 	{
 		LockGoodsStateChangedBuffer[14][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[15][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[15][0] != GetLockGoods16State)
 	{
 		LockGoodsStateChangedBuffer[15][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[16][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[16][0] != GetLockGoods17State)
 	{
 		LockGoodsStateChangedBuffer[16][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[17][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[17][0] != GetLockGoods18State)
 	{
 		LockGoodsStateChangedBuffer[17][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[18][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[18][0] != GetLockGoods19State)
 	{
 		LockGoodsStateChangedBuffer[18][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[19][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[19][0] != GetLockGoods20State)
 	{
 		LockGoodsStateChangedBuffer[19][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[20][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[20][0] != GetLockGoods21State)
 	{
 		LockGoodsStateChangedBuffer[20][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[21][0] != GetLockGoods1State)
+	if(LockGoodsStateChangedBuffer[21][0] != GetLockGoods22State)
 	{
 		LockGoodsStateChangedBuffer[21][1] = 1;
 	}

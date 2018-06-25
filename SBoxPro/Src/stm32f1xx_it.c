@@ -34,6 +34,7 @@
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx.h"
 #include "stm32f1xx_it.h"
+#include "gpio.h"
 
 /* USER CODE BEGIN 0 */
 extern uint8_t CANID;
@@ -207,13 +208,13 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 	if(CANID == (uint8_t)RxMessage.StdId)
 	{
 		/* 接收数据 */
-		CanFlag = 1;
+		//CanFlag = 1;
 		CAN_DATA0 = RxMessage.Data[0];
 		CAN_DATA1 = RxMessage.Data[1];
 		CAN_DATA2 = RxMessage.Data[2];
 		CAN_DATA3 = RxMessage.Data[3];
 		CAN_DATA4 = RxMessage.Data[4];
-		
+		BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
 	}
 	__HAL_CAN_CLEAR_FLAG(&hcan,CAN_IT_FMP0);
 

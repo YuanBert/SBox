@@ -135,13 +135,13 @@ int main(void)
 //		}
 		//BSP_LOCKWriteCtrlPin(CAN_DATA4,CtrlOpen);
 		
-		BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
-		CAN_DATA0 = 0;
-		CAN_DATA1 = 0;
-		CAN_DATA2 = 0;
-		CAN_DATA3 = 0;
-		CAN_DATA4 = 0;
-		BSP_LOCKCheckCtrlBuffer();  
+//		BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
+//		CAN_DATA0 = 0;
+//		CAN_DATA1 = 0;
+//		CAN_DATA2 = 0;
+//		CAN_DATA3 = 0;
+//		CAN_DATA4 = 0;
+//		BSP_LOCKCheckCtrlBuffer();  
 	}  
 	
 	if(tim4Flag)

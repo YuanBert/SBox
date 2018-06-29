@@ -45,10 +45,10 @@ extern uint8_t CANID;
 
 static uint8_t NeedHandBufferFlag;
 
-uint8_t CtrlBuffer[22][5]= {0};
+uint8_t CtrlBuffer[23][5]= {0};
 
-static uint8_t LockGoodsStateChangedBuffer[22][2] = {0};
-static uint8_t LockPinsStateChangedBuffer[22][2] = {0};
+static uint8_t LockGoodsStateChangedBuffer[23][2] = {0};
+static uint8_t LockPinsStateChangedBuffer[23][2] = {0};
 
 /* USER CODE END 0 */
 
@@ -219,127 +219,127 @@ LOCKERRORCODE BSP_LOCKUpdateOfGoodsState()
 {
 	LOCKERRORCODE state = LOCK_OK;
         
-	if(LockGoodsStateChangedBuffer[0][0] != GetLockGoods1State)
-	{
-		LockGoodsStateChangedBuffer[0][1] = 1;
-	}
-	
-	if(LockGoodsStateChangedBuffer[1][0] != GetLockGoods2State)
+	if(LockGoodsStateChangedBuffer[1][0] != GetLockGoods1State)
 	{
 		LockGoodsStateChangedBuffer[1][1] = 1;
 	}
-
-	if(LockGoodsStateChangedBuffer[2][0] != GetLockGoods3State)
+	
+	if(LockGoodsStateChangedBuffer[2][0] != GetLockGoods2State)
 	{
 		LockGoodsStateChangedBuffer[2][1] = 1;
 	}
 
-	if(LockGoodsStateChangedBuffer[3][0] != GetLockGoods4State)
+	if(LockGoodsStateChangedBuffer[3][0] != GetLockGoods3State)
 	{
 		LockGoodsStateChangedBuffer[3][1] = 1;
 	}
 
-	if(LockGoodsStateChangedBuffer[4][0] != GetLockGoods5State)
+	if(LockGoodsStateChangedBuffer[4][0] != GetLockGoods4State)
 	{
 		LockGoodsStateChangedBuffer[4][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[5][0] != GetLockGoods6State)
+
+	if(LockGoodsStateChangedBuffer[5][0] != GetLockGoods5State)
 	{
 		LockGoodsStateChangedBuffer[5][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[6][0] != GetLockGoods7State)
+	if(LockGoodsStateChangedBuffer[6][0] != GetLockGoods6State)
 	{
 		LockGoodsStateChangedBuffer[6][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[7][0] != GetLockGoods8State)
+	if(LockGoodsStateChangedBuffer[7][0] != GetLockGoods7State)
 	{
 		LockGoodsStateChangedBuffer[7][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[8][0] != GetLockGoods9State)
+	if(LockGoodsStateChangedBuffer[8][0] != GetLockGoods8State)
 	{
 		LockGoodsStateChangedBuffer[8][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[9][0] != GetLockGoods10State)
+	if(LockGoodsStateChangedBuffer[9][0] != GetLockGoods9State)
 	{
 		LockGoodsStateChangedBuffer[9][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[10][0] != GetLockGoods11State)
+	if(LockGoodsStateChangedBuffer[10][0] != GetLockGoods10State)
 	{
 		LockGoodsStateChangedBuffer[10][1] = 1;
 	}
-	
-	if(LockGoodsStateChangedBuffer[11][0] != GetLockGoods12State)
+	if(LockGoodsStateChangedBuffer[11][0] != GetLockGoods11State)
 	{
 		LockGoodsStateChangedBuffer[11][1] = 1;
 	}
-
-	if(LockGoodsStateChangedBuffer[12][0] != GetLockGoods13State)
+	
+	if(LockGoodsStateChangedBuffer[12][0] != GetLockGoods12State)
 	{
 		LockGoodsStateChangedBuffer[12][1] = 1;
 	}
 
-	if(LockGoodsStateChangedBuffer[13][0] != GetLockGoods14State)
+	if(LockGoodsStateChangedBuffer[13][0] != GetLockGoods13State)
 	{
 		LockGoodsStateChangedBuffer[13][1] = 1;
 	}
 
-	if(LockGoodsStateChangedBuffer[14][0] != GetLockGoods15State)
+	if(LockGoodsStateChangedBuffer[14][0] != GetLockGoods14State)
 	{
 		LockGoodsStateChangedBuffer[14][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[15][0] != GetLockGoods16State)
+
+	if(LockGoodsStateChangedBuffer[15][0] != GetLockGoods15State)
 	{
 		LockGoodsStateChangedBuffer[15][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[16][0] != GetLockGoods17State)
+	if(LockGoodsStateChangedBuffer[16][0] != GetLockGoods16State)
 	{
 		LockGoodsStateChangedBuffer[16][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[17][0] != GetLockGoods18State)
+	if(LockGoodsStateChangedBuffer[17][0] != GetLockGoods17State)
 	{
 		LockGoodsStateChangedBuffer[17][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[18][0] != GetLockGoods19State)
+	if(LockGoodsStateChangedBuffer[18][0] != GetLockGoods18State)
 	{
 		LockGoodsStateChangedBuffer[18][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[19][0] != GetLockGoods20State)
+	if(LockGoodsStateChangedBuffer[19][0] != GetLockGoods19State)
 	{
 		LockGoodsStateChangedBuffer[19][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[20][0] != GetLockGoods21State)
+	if(LockGoodsStateChangedBuffer[20][0] != GetLockGoods20State)
 	{
 		LockGoodsStateChangedBuffer[20][1] = 1;
 	}
-	if(LockGoodsStateChangedBuffer[21][0] != GetLockGoods22State)
+	if(LockGoodsStateChangedBuffer[21][0] != GetLockGoods21State)
 	{
 		LockGoodsStateChangedBuffer[21][1] = 1;
+	}
+	if(LockGoodsStateChangedBuffer[22][0] != GetLockGoods22State)
+	{
+		LockGoodsStateChangedBuffer[22][1] = 1;
 	}
 
 
 	
-	LockGoodsStateChangedBuffer[0][0] = GetLockGoods1State;
-	LockGoodsStateChangedBuffer[1][0] = GetLockGoods2State;
-	LockGoodsStateChangedBuffer[2][0] = GetLockGoods3State;
-	LockGoodsStateChangedBuffer[3][0] = GetLockGoods4State;
-	LockGoodsStateChangedBuffer[4][0] = GetLockGoods5State;
-	LockGoodsStateChangedBuffer[5][0] = GetLockGoods6State;
-	LockGoodsStateChangedBuffer[6][0] = GetLockGoods7State;
-	LockGoodsStateChangedBuffer[7][0] = GetLockGoods8State;
-	LockGoodsStateChangedBuffer[8][0] = GetLockGoods9State;
-	LockGoodsStateChangedBuffer[9][0] = GetLockGoods10State;
-	LockGoodsStateChangedBuffer[10][0] = GetLockGoods11State;
-	LockGoodsStateChangedBuffer[11][0] = GetLockGoods12State;
-	LockGoodsStateChangedBuffer[12][0] = GetLockGoods13State;
-	LockGoodsStateChangedBuffer[13][0] = GetLockGoods14State;
-	LockGoodsStateChangedBuffer[14][0] = GetLockGoods15State;
-	LockGoodsStateChangedBuffer[15][0] = GetLockGoods16State;
-	LockGoodsStateChangedBuffer[16][0] = GetLockGoods17State;
-	LockGoodsStateChangedBuffer[17][0] = GetLockGoods18State;
-	LockGoodsStateChangedBuffer[18][0] = GetLockGoods19State;
-	LockGoodsStateChangedBuffer[19][0] = GetLockGoods20State;
-	LockGoodsStateChangedBuffer[20][0] = GetLockGoods21State;
-	LockGoodsStateChangedBuffer[21][0] = GetLockGoods22State;
+	LockGoodsStateChangedBuffer[1][0] = GetLockGoods1State;
+	LockGoodsStateChangedBuffer[2][0] = GetLockGoods2State;
+	LockGoodsStateChangedBuffer[3][0] = GetLockGoods3State;
+	LockGoodsStateChangedBuffer[4][0] = GetLockGoods4State;
+	LockGoodsStateChangedBuffer[5][0] = GetLockGoods5State;
+	LockGoodsStateChangedBuffer[6][0] = GetLockGoods6State;
+	LockGoodsStateChangedBuffer[7][0] = GetLockGoods7State;
+	LockGoodsStateChangedBuffer[8][0] = GetLockGoods8State;
+	LockGoodsStateChangedBuffer[9][0] = GetLockGoods9State;
+	LockGoodsStateChangedBuffer[10][0] = GetLockGoods10State;
+	LockGoodsStateChangedBuffer[11][0] = GetLockGoods11State;
+	LockGoodsStateChangedBuffer[12][0] = GetLockGoods12State;
+	LockGoodsStateChangedBuffer[13][0] = GetLockGoods13State;
+	LockGoodsStateChangedBuffer[14][0] = GetLockGoods14State;
+	LockGoodsStateChangedBuffer[15][0] = GetLockGoods15State;
+	LockGoodsStateChangedBuffer[16][0] = GetLockGoods16State;
+	LockGoodsStateChangedBuffer[17][0] = GetLockGoods17State;
+	LockGoodsStateChangedBuffer[18][0] = GetLockGoods18State;
+	LockGoodsStateChangedBuffer[19][0] = GetLockGoods19State;
+	LockGoodsStateChangedBuffer[20][0] = GetLockGoods20State;
+	LockGoodsStateChangedBuffer[21][0] = GetLockGoods21State;
+	LockGoodsStateChangedBuffer[22][0] = GetLockGoods22State;
 
 	return state;
 }
@@ -349,7 +349,7 @@ LOCKERRORCODE BSP_LOCKSendGoodsChangedMessage(void)
 	LOCKERRORCODE state = LOCK_OK;
 	uint8_t messageData[7];	
 	uint8_t i = 0;
-	for(i = 0; i < 22; i++)
+	for(i = 1; i < 23; i++)
 	{
 		if(1 == LockGoodsStateChangedBuffer[i][1])
 		{
@@ -383,118 +383,118 @@ LOCKERRORCODE BSP_LOCKSendGoodsChangedMessage(void)
 LOCKERRORCODE BSP_LOCKUpdateOfLockPinsState(void)
 {
 	LOCKERRORCODE state = LOCK_OK;
-	if(LockPinsStateChangedBuffer[0][0] != GetLockPins1State)
-	{
-		LockPinsStateChangedBuffer[0][1] = 1;
-	}
-	if(LockPinsStateChangedBuffer[1][0] != GetLockPins2State)
+	if(LockPinsStateChangedBuffer[1][0] != GetLockPins1State)
 	{
 		LockPinsStateChangedBuffer[1][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[2][0] != GetLockPins3State)
+	if(LockPinsStateChangedBuffer[2][0] != GetLockPins2State)
 	{
 		LockPinsStateChangedBuffer[2][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[3][0] != GetLockPins4State)
+	if(LockPinsStateChangedBuffer[3][0] != GetLockPins3State)
 	{
 		LockPinsStateChangedBuffer[3][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[4][0] != GetLockPins5State)
+	if(LockPinsStateChangedBuffer[4][0] != GetLockPins4State)
 	{
 		LockPinsStateChangedBuffer[4][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[5][0] != GetLockPins6State)
+	if(LockPinsStateChangedBuffer[5][0] != GetLockPins5State)
 	{
 		LockPinsStateChangedBuffer[5][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[6][0] != GetLockPins7State)
+	if(LockPinsStateChangedBuffer[6][0] != GetLockPins6State)
 	{
 		LockPinsStateChangedBuffer[6][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[7][0] != GetLockPins8State)
+	if(LockPinsStateChangedBuffer[7][0] != GetLockPins7State)
 	{
 		LockPinsStateChangedBuffer[7][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[8][0] != GetLockPins9State)
+	if(LockPinsStateChangedBuffer[8][0] != GetLockPins8State)
 	{
 		LockPinsStateChangedBuffer[8][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[9][0] != GetLockPins10State)
+	if(LockPinsStateChangedBuffer[9][0] != GetLockPins9State)
 	{
 		LockPinsStateChangedBuffer[9][1] = 1;
 	}
-	
-	if(LockPinsStateChangedBuffer[10][0] != GetLockPins11State)
+	if(LockPinsStateChangedBuffer[10][0] != GetLockPins10State)
 	{
 		LockPinsStateChangedBuffer[10][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[11][0] != GetLockPins12State)
+	
+	if(LockPinsStateChangedBuffer[11][0] != GetLockPins11State)
 	{
 		LockPinsStateChangedBuffer[11][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[12][0] != GetLockPins13State)
+	if(LockPinsStateChangedBuffer[12][0] != GetLockPins12State)
 	{
 		LockPinsStateChangedBuffer[12][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[13][0] != GetLockPins14State)
+	if(LockPinsStateChangedBuffer[13][0] != GetLockPins13State)
 	{
 		LockPinsStateChangedBuffer[13][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[14][0] != GetLockPins15State)
+	if(LockPinsStateChangedBuffer[14][0] != GetLockPins14State)
 	{
 		LockPinsStateChangedBuffer[14][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[15][0] != GetLockPins16State)
+	if(LockPinsStateChangedBuffer[15][0] != GetLockPins15State)
 	{
 		LockPinsStateChangedBuffer[15][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[16][0] != GetLockPins17State)
+	if(LockPinsStateChangedBuffer[16][0] != GetLockPins16State)
 	{
 		LockPinsStateChangedBuffer[16][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[17][0] != GetLockPins18State)
+	if(LockPinsStateChangedBuffer[17][0] != GetLockPins17State)
 	{
 		LockPinsStateChangedBuffer[17][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[18][0] != GetLockPins19State)
+	if(LockPinsStateChangedBuffer[18][0] != GetLockPins18State)
 	{
 		LockPinsStateChangedBuffer[18][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[19][0] != GetLockPins20State)
+	if(LockPinsStateChangedBuffer[19][0] != GetLockPins19State)
 	{
 		LockPinsStateChangedBuffer[19][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[20][0] != GetLockPins21State)
+	if(LockPinsStateChangedBuffer[20][0] != GetLockPins20State)
 	{
 		LockPinsStateChangedBuffer[20][1] = 1;
 	}
-	if(LockPinsStateChangedBuffer[21][0] != GetLockPins22State)
+	if(LockPinsStateChangedBuffer[21][0] != GetLockPins21State)
 	{
 		LockPinsStateChangedBuffer[21][1] = 1;
 	}
+	if(LockPinsStateChangedBuffer[22][0] != GetLockPins22State)
+	{
+		LockPinsStateChangedBuffer[22][1] = 1;
+	}
 
-	LockPinsStateChangedBuffer[0][0] = GetLockPins1State;
-	LockPinsStateChangedBuffer[1][0] = GetLockPins2State;
-	LockPinsStateChangedBuffer[2][0] = GetLockPins3State;
-	LockPinsStateChangedBuffer[3][0] = GetLockPins4State;
-	LockPinsStateChangedBuffer[4][0] = GetLockPins5State;
-	LockPinsStateChangedBuffer[5][0] = GetLockPins6State;
-	LockPinsStateChangedBuffer[6][0] = GetLockPins7State;
-	LockPinsStateChangedBuffer[7][0] = GetLockPins8State;
-	LockPinsStateChangedBuffer[8][0] = GetLockPins9State;
-	LockPinsStateChangedBuffer[9][0] = GetLockPins10State;
-	LockPinsStateChangedBuffer[10][0] = GetLockPins11State;
-	LockPinsStateChangedBuffer[11][0] = GetLockPins12State;
-	LockPinsStateChangedBuffer[12][0] = GetLockPins13State;
-	LockPinsStateChangedBuffer[13][0] = GetLockPins14State;
-	LockPinsStateChangedBuffer[14][0] = GetLockPins15State;
-	LockPinsStateChangedBuffer[15][0] = GetLockPins16State;
-	LockPinsStateChangedBuffer[16][0] = GetLockPins17State;
-	LockPinsStateChangedBuffer[17][0] = GetLockPins18State;
-	LockPinsStateChangedBuffer[18][0] = GetLockPins19State;
-	LockPinsStateChangedBuffer[19][0] = GetLockPins20State;
-	LockPinsStateChangedBuffer[20][0] = GetLockPins21State;
-	LockPinsStateChangedBuffer[21][0] = GetLockPins22State;
+	LockPinsStateChangedBuffer[1][0] = GetLockPins1State;
+	LockPinsStateChangedBuffer[2][0] = GetLockPins2State;
+	LockPinsStateChangedBuffer[3][0] = GetLockPins3State;
+	LockPinsStateChangedBuffer[4][0] = GetLockPins4State;
+	LockPinsStateChangedBuffer[5][0] = GetLockPins5State;
+	LockPinsStateChangedBuffer[6][0] = GetLockPins6State;
+	LockPinsStateChangedBuffer[7][0] = GetLockPins7State;
+	LockPinsStateChangedBuffer[8][0] = GetLockPins8State;
+	LockPinsStateChangedBuffer[9][0] = GetLockPins9State;
+	LockPinsStateChangedBuffer[10][0] = GetLockPins10State;
+	LockPinsStateChangedBuffer[11][0] = GetLockPins11State;
+	LockPinsStateChangedBuffer[12][0] = GetLockPins12State;
+	LockPinsStateChangedBuffer[13][0] = GetLockPins13State;
+	LockPinsStateChangedBuffer[14][0] = GetLockPins14State;
+	LockPinsStateChangedBuffer[15][0] = GetLockPins15State;
+	LockPinsStateChangedBuffer[16][0] = GetLockPins16State;
+	LockPinsStateChangedBuffer[17][0] = GetLockPins17State;
+	LockPinsStateChangedBuffer[18][0] = GetLockPins18State;
+	LockPinsStateChangedBuffer[19][0] = GetLockPins19State;
+	LockPinsStateChangedBuffer[20][0] = GetLockPins20State;
+	LockPinsStateChangedBuffer[21][0] = GetLockPins21State;
+	LockPinsStateChangedBuffer[22][0] = GetLockPins22State;
 	return state;
 }
 LOCKERRORCODE BSP_LOCKSendPinsChangedMessage(void)
@@ -502,7 +502,7 @@ LOCKERRORCODE BSP_LOCKSendPinsChangedMessage(void)
 	LOCKERRORCODE state = LOCK_OK;
 	uint8_t messageData[7];	
 	uint8_t i = 0;
-	for(i = 0; i < 22; i++)
+	for(i = 1; i < 23; i++)
 	{
 		if(1 == LockPinsStateChangedBuffer[i][1])
 		{
@@ -529,7 +529,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
 	uint8_t LockStatus;
 	uint8_t IDdata[7];
 	
-	if(nBoxNumber > 21)
+	if(nBoxNumber > 22)
 	{
 		state = LOCK_ERROR;
 		return state;
@@ -543,7 +543,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
     
 	switch (nBoxNumber)
 		{
-		case 0:
+		case 1:
             LockStatus = GetLockPins1State;
 			HAL_GPIO_WritePin(LOCK_CTRL1_GPIO_Port,LOCK_CTRL1_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -556,7 +556,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 1:
+		case 2:
             LockStatus = GetLockPins2State;
 			HAL_GPIO_WritePin(LOCK_CTRL2_GPIO_Port,LOCK_CTRL2_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -569,7 +569,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 2:
+		case 3:
             LockStatus = GetLockPins3State;
 			HAL_GPIO_WritePin(LOCK_CTRL3_GPIO_Port,LOCK_CTRL3_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
@@ -581,7 +581,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
                 CanWriteData(CANID, IDdata, 7);
             }
 			break;
-		case 3:
+		case 4:
             LockStatus = GetLockPins4State;
 			HAL_GPIO_WritePin(LOCK_CTRL4_GPIO_Port,LOCK_CTRL4_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -594,7 +594,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 4:
+		case 5:
             LockStatus = GetLockPins5State;
 			HAL_GPIO_WritePin(LOCK_CTRL5_GPIO_Port,LOCK_CTRL5_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -607,7 +607,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 5:
+		case 6:
             LockStatus = GetLockPins6State;
 			HAL_GPIO_WritePin(LOCK_CTRL6_GPIO_Port,LOCK_CTRL6_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
@@ -619,7 +619,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
                 CanWriteData(CANID, IDdata, 7);
             }
 			break;		
-		case 6:
+		case 7:
             LockStatus = GetLockPins7State;
 			HAL_GPIO_WritePin(LOCK_CTRL7_GPIO_Port,LOCK_CTRL7_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -632,7 +632,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 7:
+		case 8:
             LockStatus = GetLockPins8State;
 			HAL_GPIO_WritePin(LOCK_CTRL8_GPIO_Port,LOCK_CTRL8_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -645,11 +645,11 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 8:
+		case 9:
             LockStatus = GetLockPins9State;
 			HAL_GPIO_WritePin(LOCK_CTRL9_GPIO_Port,LOCK_CTRL9_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
-			HAL_GPIO_WritePin(LOCK_CTRL9_GPIO_Port,LOCK_CTRL9_Pin,GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LOCK_CTRL9_GPIO_Port,LOCK_CTRL9_Pin,GPIO_PIN_SET);
 			if(1 == LockStatus)
             {
                 IDdata[5] = LockStatus;
@@ -657,7 +657,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
                 CanWriteData(CANID, IDdata, 7);
             }
 			break;
-		case 9:
+		case 10:
             LockStatus = GetLockPins10State;
 			HAL_GPIO_WritePin(LOCK_CTRL10_GPIO_Port,LOCK_CTRL10_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -669,7 +669,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
                 CanWriteData(CANID, IDdata, 7);
             }
 			break;
-		case 10:
+		case 11:
             LockStatus = GetLockPins11State;
 			HAL_GPIO_WritePin(LOCK_CTRL11_GPIO_Port,LOCK_CTRL11_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -682,7 +682,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 11:
+		case 12:
             LockStatus = GetLockPins12State;
 			HAL_GPIO_WritePin(LOCK_CTRL12_GPIO_Port,LOCK_CTRL12_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -695,7 +695,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 12:
+		case 13:
             LockStatus = GetLockPins13State;
 			HAL_GPIO_WritePin(LOCK_CTRL13_GPIO_Port,LOCK_CTRL13_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
@@ -707,7 +707,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
                 CanWriteData(CANID, IDdata, 7);
             }
 			break;
-		case 13:
+		case 14:
             LockStatus = GetLockPins14State;
 			HAL_GPIO_WritePin(LOCK_CTRL14_GPIO_Port,LOCK_CTRL14_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -720,7 +720,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 14:
+		case 15:
             LockStatus = GetLockPins15State;
 			HAL_GPIO_WritePin(LOCK_CTRL15_GPIO_Port,LOCK_CTRL15_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -733,7 +733,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 15:
+		case 16:
             LockStatus = GetLockPins16State;
 			HAL_GPIO_WritePin(LOCK_CTRL16_GPIO_Port,LOCK_CTRL16_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
@@ -745,7 +745,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
                 CanWriteData(CANID, IDdata, 7);
             }
 			break;		
-		case 16:
+		case 17:
             LockStatus = GetLockPins17State;
 			HAL_GPIO_WritePin(LOCK_CTRL17_GPIO_Port,LOCK_CTRL17_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -758,7 +758,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 17:
+		case 18:
             LockStatus = GetLockPins18State;
 			HAL_GPIO_WritePin(LOCK_CTRL18_GPIO_Port,LOCK_CTRL18_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -771,11 +771,11 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 			
-		case 18:
+		case 19:
             LockStatus = GetLockPins19State;
 			HAL_GPIO_WritePin(LOCK_CTRL19_GPIO_Port,LOCK_CTRL19_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
-			HAL_GPIO_WritePin(LOCK_CTRL19_GPIO_Port,LOCK_CTRL19_Pin,GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LOCK_CTRL19_GPIO_Port,LOCK_CTRL19_Pin,GPIO_PIN_SET);
 			if(1 == LockStatus)
             {
                 IDdata[5] = LockStatus;
@@ -783,7 +783,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
                 CanWriteData(CANID, IDdata, 7);
             }
 			break;
-		case 19:
+		case 20:
             LockStatus = GetLockPins20State;
 			HAL_GPIO_WritePin(LOCK_CTRL20_GPIO_Port,LOCK_CTRL20_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -795,7 +795,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
                 CanWriteData(CANID, IDdata, 7);
             }
 			break;			
-		case 20:
+		case 21:
             LockStatus = GetLockPins21State;
 			HAL_GPIO_WritePin(LOCK_CTRL21_GPIO_Port,LOCK_CTRL21_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -808,7 +808,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 				
-		case 21:
+		case 22:
             LockStatus = GetLockPins22State;
 			HAL_GPIO_WritePin(LOCK_CTRL22_GPIO_Port,LOCK_CTRL22_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
@@ -832,7 +832,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
 LOCKERRORCODE BSP_LOCKWriteCtrlBuffer(uint8_t ID0,uint8_t ID1,uint8_t ID2, uint8_t ID3,uint8_t nBoxNumber)
 {
 	LOCKERRORCODE state = LOCK_OK;
-	if(nBoxNumber > 21)
+	if(nBoxNumber > 22)
 	{
 		state = LOCK_ERROR;
 		return state;
@@ -855,7 +855,7 @@ LOCKERRORCODE BSP_LOCKCheckCtrlBuffer(void)
 		return state;
 	}
 	uint8_t i = 0;
-	for(i = 0; i < 22; i++)
+	for(i = 1; i < 23; i++)
 	{
 		if(1 == CtrlBuffer[i][4])
 		{

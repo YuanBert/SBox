@@ -160,9 +160,25 @@ void CANInit(void)
 void CANFilterConfig(void)
 {
 	CAN_FilterConfTypeDef sFilterConfig;
-	uint32_t ExtId = 0x1800F001;
+  uint16_t StdIdArray[3] = {CANID , 0xFF, 0xAA};
+  uint16_t mask,num,tmp,i;
 	
-	sFilterConfig.FilterNumber = 0;
+	sFilterConfig.FilterNumber = 1;
+	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
+	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;  
+  sFilterConfig.FilterIdHigh = (StdIdArray[0] << 5);
+  sFilterConfig.FilterIdLow = 0x0000;
+  
+  mask = 0x7FF;
+  num = sizeof(StdIdArray)/sizeof(StdIdArray[0]);
+  for(i = 0; i < num; i++)
+  {
+    tmp = StdIdArray[i] ^ (~StdIdArray[0]);
+    mask &= tmp;
+  }
+  sFilterConfig.FilterMaskIdHigh = (mask << 5);
+  sFilterConfig.FilterMaskIdLow = 0 | 0x02;
+  
 	
 //	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
 //	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
@@ -171,14 +187,16 @@ void CANFilterConfig(void)
 //	sFilterConfig.FilterMaskIdHigh = 0x0000;
 //	sFilterConfig.FilterMaskIdLow = 0x0000;
 	
-	sFilterConfig.FilterMode = CAN_FILTERMODE_IDLIST;
-	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+//	sFilterConfig.FilterMode = CAN_FILTERMODE_IDLIST;
+//	sFilterConfig.FilterScale = CAN_FILTERSCALE_16BIT;
 
-  	sFilterConfig.FilterIdHigh = CANID << 5;
-  	sFilterConfig.FilterIdLow = 0|CAN_ID_STD;	//设置IDE位为0
-  	sFilterConfig.FilterMaskIdHigh = ((ExtId << 3)>>16)&0xFFFF;
-  	sFilterConfig.FilterMaskIdLow = ((ExtId << 3)&0xFFFF) | CAN_ID_EXT;
-	sFilterConfig.BankNumber = 14;
+//  	sFilterConfig.FilterIdHigh = BoardFrameID0 << 5;
+//  	sFilterConfig.FilterIdLow = CANID << 5;	//设置IDE位为0
+//  	sFilterConfig.FilterMaskIdHigh = BoardFrameID0 << 5;
+//  	sFilterConfig.FilterMaskIdLow = BoardFrameID1 << 5;
+  
+  
+    sFilterConfig.BankNumber = 14;
   	sFilterConfig.FilterFIFOAssignment = 0;
   	sFilterConfig.FilterActivation = ENABLE;
 	__HAL_CAN_ENABLE_IT(&hcan,CAN_IT_FMP0);

@@ -41,6 +41,7 @@ extern uint8_t CANID;
 extern CanRxMsgTypeDef          RxMessage;
 extern uint8_t CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4,CAN_DATA5,CAN_DATA6,CAN_DATA7;//数据
 extern uint8_t CanFlag;
+extern uint8_t gCanBroadcastFrameFlag;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -205,16 +206,21 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 {
   /* USER CODE BEGIN USB_LP_CAN1_RX0_IRQn 0 */
 	HAL_CAN_Receive(&hcan,0,0xFF);
-	if(CANID == (uint8_t)RxMessage.StdId)
+  
+  if(0xFF == (uint8_t)RxMessage.StdId)
+  {
+    gCanBroadcastFrameFlag = 1;
+  }
+	else if(CANID == (uint8_t)RxMessage.StdId)
 	{
 		/* 接收数据 */
-		//CanFlag = 1;
+		CanFlag = 1;
 		CAN_DATA0 = RxMessage.Data[0];
 		CAN_DATA1 = RxMessage.Data[1];
 		CAN_DATA2 = RxMessage.Data[2];
 		CAN_DATA3 = RxMessage.Data[3];
 		CAN_DATA4 = RxMessage.Data[4];
-		BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
+		//BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
 	}
 	__HAL_CAN_CLEAR_FLAG(&hcan,CAN_IT_FMP0);
 

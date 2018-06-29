@@ -51,6 +51,7 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
+uint8_t gCanBroadcastFrameFlag;
 uint8_t CanFlag;
 uint8_t CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4,CAN_DATA5,CAN_DATA6,CAN_DATA7;//数据
 uint8_t tim4Flag;
@@ -81,7 +82,7 @@ static void MX_NVIC_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+   uint8_t IData[7] = {0};
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -114,6 +115,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim4);
   HAL_TIM_Base_Start_IT(&htim5);
   
+  gCanBroadcastFrameFlag = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -124,6 +126,16 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
+    
+  if(1 == gCanBroadcastFrameFlag)
+  {
+    gCanBroadcastFrameFlag = 0;
+    IData[4] = 0xFF;
+    IData[5] = 0xFF;
+    IData[6] = 0xFF;
+    CanWriteData(CANID, IData, 7);
+  }
+  
 	if(1 == CanFlag)
 	{
 		CanFlag = 0;
@@ -135,13 +147,13 @@ int main(void)
 //		}
 		//BSP_LOCKWriteCtrlPin(CAN_DATA4,CtrlOpen);
 		
-//		BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
-//		CAN_DATA0 = 0;
-//		CAN_DATA1 = 0;
-//		CAN_DATA2 = 0;
-//		CAN_DATA3 = 0;
-//		CAN_DATA4 = 0;
-//		BSP_LOCKCheckCtrlBuffer();  
+		BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
+		CAN_DATA0 = 0;
+		CAN_DATA1 = 0;
+		CAN_DATA2 = 0;
+		CAN_DATA3 = 0;
+		CAN_DATA4 = 0;
+		BSP_LOCKCheckCtrlBuffer();  
 	}  
 	
 	if(tim4Flag)
@@ -156,6 +168,10 @@ int main(void)
 	if(1 == tim5Flag)
 	{
 		tim5Flag = 0;
+//    IData[4] = 0xFF;
+//    IData[5] = 0xFF;
+//    IData[6] = 0xFF;
+//    CanWriteData(CANID, IData, 7);
 				/*  获取ID*/
 //		CANID = 0;
 //		if(GPIO_PIN_SET == GetAddrBit3Val)

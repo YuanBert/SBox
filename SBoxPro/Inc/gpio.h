@@ -54,6 +54,13 @@
 
 /* USER CODE BEGIN Private defines */
 //
+#define LockPinOff    GPIO_PIN_SET
+#define LockPinON     GPIO_PIN_RESET
+#define GetLockGoodsState(x)  GetLockGoods##xState
+#define GetLockPinsState(x)   GetLockPins##xState
+#define SetLockCtrlPinsState(x,y) HAL_GPIO_WritePin(LOCK_CTRL##x_GPIO_Port,LOCK_CTRL##x_Pin,y)
+
+
 #define LockOpenPinStatus		
 #define GetLockGoods1State 		HAL_GPIO_ReadPin(LOCK_GOODS_1_GPIO_Port, LOCK_GOODS_1_Pin)
 #define GetLockGoods2State 		HAL_GPIO_ReadPin(LOCK_GOODS_2_GPIO_Port, LOCK_GOODS_2_Pin)

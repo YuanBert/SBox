@@ -40,6 +40,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
 /* USER CODE BEGIN 0 */
+#define NEWVERSION 1
 #include "can.h"
 extern uint8_t CANID;
 
@@ -81,7 +82,7 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOE, LOCK_CTRL11_Pin|LOCK_CTRL1_Pin|LOCK_CTRL12_Pin|LOCK_CTRL13_Pin 
                           |LOCK_CTRL14_Pin, GPIO_PIN_SET);
-
+   HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_10,GPIO_PIN_RESET);
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, LOCK_CTRL10_Pin|LOCK_CTRL9_Pin|LOCK_CTRL8_Pin|LOCK_CTRL3_Pin 
                           |LOCK_CTRL22_Pin, GPIO_PIN_SET);
@@ -104,7 +105,7 @@ void MX_GPIO_Init(void)
                            PEPin PEPin */
   GPIO_InitStruct.Pin = LOCK_ADDR3_Pin|LOCK_ADDR2_Pin|LOCK_ADDR1_Pin|LOCK_ADDR0_Pin 
                           |LOCK_STATE2_Pin|LOCK_STATE1_Pin|LOCK_STATE12_Pin|LOCK_STATE13_Pin 
-                          |LOCK_STATE14_Pin|LOCK_VibrationSensor_Pin;
+                          |LOCK_STATE14_Pin|LOCK_VibrationSensor_Pin|GPIO_PIN_0;//|GPIO_PIN_8|GPIO_PIN_10;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
@@ -112,7 +113,7 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pins : PEPin PEPin PEPin PEPin 
                            PEPin */
   GPIO_InitStruct.Pin = LOCK_CTRL11_Pin|LOCK_CTRL1_Pin|LOCK_CTRL12_Pin|LOCK_CTRL13_Pin 
-                          |LOCK_CTRL14_Pin;
+                          |LOCK_CTRL14_Pin | GPIO_PIN_8|GPIO_PIN_10;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
@@ -154,7 +155,7 @@ void MX_GPIO_Init(void)
                            PBPin */
   GPIO_InitStruct.Pin = LOCK_STATE3_Pin|LOCK_STATE15_Pin|LOCK_STATE16_Pin|LOCK_STATE17_Pin 
                           |LOCK_GOODS_5_Pin|LOCK_GOODS_4_Pin|LOCK_GOODS_3_Pin|LOCK_GOODS_2_Pin 
-                          |LOCK_GOODS_1_Pin;
+                          |LOCK_GOODS_1_Pin | GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -189,7 +190,9 @@ void MX_GPIO_Init(void)
 LOCKERRORCODE BSP_LOCKInit(void)
 {
 	LOCKERRORCODE state = LOCK_OK;
+#if 0 == NEWVERSION
 	HAL_GPIO_WritePin(LOCK_CTRL1_GPIO_Port,LOCK_CTRL1_Pin,GPIO_PIN_SET);
+#endif
 	HAL_GPIO_WritePin(LOCK_CTRL2_GPIO_Port,LOCK_CTRL2_Pin,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LOCK_CTRL3_GPIO_Port,LOCK_CTRL3_Pin,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LOCK_CTRL4_GPIO_Port,LOCK_CTRL4_Pin,GPIO_PIN_SET);
@@ -200,7 +203,9 @@ LOCKERRORCODE BSP_LOCKInit(void)
 	HAL_GPIO_WritePin(LOCK_CTRL9_GPIO_Port,LOCK_CTRL9_Pin,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LOCK_CTRL10_GPIO_Port,LOCK_CTRL10_Pin,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LOCK_CTRL11_GPIO_Port,LOCK_CTRL11_Pin,GPIO_PIN_SET);
+#if 0 == NEWVERSION
 	HAL_GPIO_WritePin(LOCK_CTRL12_GPIO_Port,LOCK_CTRL12_Pin,GPIO_PIN_SET);
+#endif
 	HAL_GPIO_WritePin(LOCK_CTRL13_GPIO_Port,LOCK_CTRL13_Pin,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LOCK_CTRL14_GPIO_Port,LOCK_CTRL14_Pin,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LOCK_CTRL15_GPIO_Port,LOCK_CTRL15_Pin,GPIO_PIN_SET);
@@ -218,12 +223,12 @@ LOCKERRORCODE BSP_LOCKInit(void)
 LOCKERRORCODE BSP_LOCKUpdateOfGoodsState()
 {
 	LOCKERRORCODE state = LOCK_OK;
-        
+#if 0 == NEWVERSION        
 	if(LockGoodsStateChangedBuffer[1][0] != GetLockGoods1State)
 	{
 		LockGoodsStateChangedBuffer[1][1] = 1;
 	}
-	
+#endif	
 	if(LockGoodsStateChangedBuffer[2][0] != GetLockGoods2State)
 	{
 		LockGoodsStateChangedBuffer[2][1] = 1;
@@ -267,12 +272,12 @@ LOCKERRORCODE BSP_LOCKUpdateOfGoodsState()
 	{
 		LockGoodsStateChangedBuffer[11][1] = 1;
 	}
-	
+#if 0 == NEWVERSION
 	if(LockGoodsStateChangedBuffer[12][0] != GetLockGoods12State)
 	{
 		LockGoodsStateChangedBuffer[12][1] = 1;
 	}
-
+#endif
 	if(LockGoodsStateChangedBuffer[13][0] != GetLockGoods13State)
 	{
 		LockGoodsStateChangedBuffer[13][1] = 1;
@@ -317,8 +322,9 @@ LOCKERRORCODE BSP_LOCKUpdateOfGoodsState()
 	}
 
 
-	
+#if 0 == NEWVERSION
 	LockGoodsStateChangedBuffer[1][0] = GetLockGoods1State;
+#endif
 	LockGoodsStateChangedBuffer[2][0] = GetLockGoods2State;
 	LockGoodsStateChangedBuffer[3][0] = GetLockGoods3State;
 	LockGoodsStateChangedBuffer[4][0] = GetLockGoods4State;
@@ -329,7 +335,9 @@ LOCKERRORCODE BSP_LOCKUpdateOfGoodsState()
 	LockGoodsStateChangedBuffer[9][0] = GetLockGoods9State;
 	LockGoodsStateChangedBuffer[10][0] = GetLockGoods10State;
 	LockGoodsStateChangedBuffer[11][0] = GetLockGoods11State;
+#if 0 == NEWVERSION
 	LockGoodsStateChangedBuffer[12][0] = GetLockGoods12State;
+#endif
 	LockGoodsStateChangedBuffer[13][0] = GetLockGoods13State;
 	LockGoodsStateChangedBuffer[14][0] = GetLockGoods14State;
 	LockGoodsStateChangedBuffer[15][0] = GetLockGoods15State;
@@ -349,15 +357,28 @@ LOCKERRORCODE BSP_LOCKSendGoodsChangedMessage(void)
 	LOCKERRORCODE state = LOCK_OK;
 	uint8_t messageData[7];	
 	uint8_t i = 0;
+  uint8_t a = 0;
+  
 	for(i = 1; i < 23; i++)
 	{
 		if(1 == LockGoodsStateChangedBuffer[i][1])
 		{
+      a = i;
 			messageData[0] = 0;
 			messageData[1] = 0;
 			messageData[2] = 0;
 			messageData[3] = 0;
-			messageData[4] = i;
+#if 1 == NEWVERSION
+      if(a < 12)
+      {
+         a -= 1;
+      }
+      else
+      {
+        a -= 2;
+      }
+#endif
+			messageData[4] = a;
 			messageData[5] = LockPinsStateChangedBuffer[i][0];
 			/* 如果有物体在储物柜则上报逻辑1，否则返回0 */
 			if(0 == LockGoodsStateChangedBuffer[i][0])
@@ -383,10 +404,12 @@ LOCKERRORCODE BSP_LOCKSendGoodsChangedMessage(void)
 LOCKERRORCODE BSP_LOCKUpdateOfLockPinsState(void)
 {
 	LOCKERRORCODE state = LOCK_OK;
+#if 0 == NEWVERSION
 	if(LockPinsStateChangedBuffer[1][0] != GetLockPins1State)
 	{
 		LockPinsStateChangedBuffer[1][1] = 1;
 	}
+#endif
 	if(LockPinsStateChangedBuffer[2][0] != GetLockPins2State)
 	{
 		LockPinsStateChangedBuffer[2][1] = 1;
@@ -428,10 +451,12 @@ LOCKERRORCODE BSP_LOCKUpdateOfLockPinsState(void)
 	{
 		LockPinsStateChangedBuffer[11][1] = 1;
 	}
+#if 0 == NEWVERSION
 	if(LockPinsStateChangedBuffer[12][0] != GetLockPins12State)
 	{
 		LockPinsStateChangedBuffer[12][1] = 1;
 	}
+#endif
 	if(LockPinsStateChangedBuffer[13][0] != GetLockPins13State)
 	{
 		LockPinsStateChangedBuffer[13][1] = 1;
@@ -472,8 +497,9 @@ LOCKERRORCODE BSP_LOCKUpdateOfLockPinsState(void)
 	{
 		LockPinsStateChangedBuffer[22][1] = 1;
 	}
-
+#if 0 == NEWVERSION
 	LockPinsStateChangedBuffer[1][0] = GetLockPins1State;
+#endif
 	LockPinsStateChangedBuffer[2][0] = GetLockPins2State;
 	LockPinsStateChangedBuffer[3][0] = GetLockPins3State;
 	LockPinsStateChangedBuffer[4][0] = GetLockPins4State;
@@ -484,7 +510,9 @@ LOCKERRORCODE BSP_LOCKUpdateOfLockPinsState(void)
 	LockPinsStateChangedBuffer[9][0] = GetLockPins9State;
 	LockPinsStateChangedBuffer[10][0] = GetLockPins10State;
 	LockPinsStateChangedBuffer[11][0] = GetLockPins11State;
+#if 0 == NEWVERSION
 	LockPinsStateChangedBuffer[12][0] = GetLockPins12State;
+#endif
 	LockPinsStateChangedBuffer[13][0] = GetLockPins13State;
 	LockPinsStateChangedBuffer[14][0] = GetLockPins14State;
 	LockPinsStateChangedBuffer[15][0] = GetLockPins15State;
@@ -535,16 +563,27 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
 		return state;
 	}
     
-    IDdata[0] = 0;//CtrlBuffer[nBoxNumber][0];
+  IDdata[0] = 0;//CtrlBuffer[nBoxNumber][0];
 	IDdata[1] = 0;//CtrlBuffer[nBoxNumber][1];
 	IDdata[2] = 0;//CtrlBuffer[nBoxNumber][2];
 	IDdata[3] = 0;//CtrlBuffer[nBoxNumber][3];
-    IDdata[4] = nBoxNumber;
-    
+  IDdata[4] = nBoxNumber;
+  
+#if 1 == NEWVERSION
+  if(nBoxNumber < 11)
+  {
+    IDdata[4] = nBoxNumber - 1;
+  }
+  else
+  {
+    IDdata[4] = nBoxNumber - 2;
+  }
+#endif
+  
 	switch (nBoxNumber)
 		{
 		case 1:
-            LockStatus = GetLockPins1State;
+      LockStatus = GetLockPins1State;
 			HAL_GPIO_WritePin(LOCK_CTRL1_GPIO_Port,LOCK_CTRL1_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL1_GPIO_Port,LOCK_CTRL1_Pin,GPIO_PIN_SET);
@@ -557,7 +596,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
 			break;
 			
 		case 2:
-            LockStatus = GetLockPins2State;
+      LockStatus = GetLockPins2State;
 			HAL_GPIO_WritePin(LOCK_CTRL2_GPIO_Port,LOCK_CTRL2_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL2_GPIO_Port,LOCK_CTRL2_Pin,GPIO_PIN_SET);
@@ -570,7 +609,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
 			break;
 			
 		case 3:
-            LockStatus = GetLockPins3State;
+      LockStatus = GetLockPins3State;
 			HAL_GPIO_WritePin(LOCK_CTRL3_GPIO_Port,LOCK_CTRL3_Pin,GPIO_PIN_RESET);	
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL3_GPIO_Port,LOCK_CTRL3_Pin,GPIO_PIN_SET);
@@ -582,7 +621,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
             }
 			break;
 		case 4:
-            LockStatus = GetLockPins4State;
+      LockStatus = GetLockPins4State;
 			HAL_GPIO_WritePin(LOCK_CTRL4_GPIO_Port,LOCK_CTRL4_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL4_GPIO_Port,LOCK_CTRL4_Pin,GPIO_PIN_SET);
@@ -595,7 +634,7 @@ LOCKERRORCODE BSP_LOCKWriteCtrlPin(uint8_t nBoxNumber, CtrlState nCtrlState)
 			break;
 			
 		case 5:
-            LockStatus = GetLockPins5State;
+      LockStatus = GetLockPins5State;
 			HAL_GPIO_WritePin(LOCK_CTRL5_GPIO_Port,LOCK_CTRL5_Pin,GPIO_PIN_RESET);
 			HAL_Delay(10);
 			HAL_GPIO_WritePin(LOCK_CTRL5_GPIO_Port,LOCK_CTRL5_Pin,GPIO_PIN_SET);  
@@ -837,6 +876,16 @@ LOCKERRORCODE BSP_LOCKWriteCtrlBuffer(uint8_t ID0,uint8_t ID1,uint8_t ID2, uint8
 		state = LOCK_ERROR;
 		return state;
 	}
+#if 1 == NEWVERSION
+  if(nBoxNumber < 11)
+  {
+    nBoxNumber += 1;
+  }
+  else
+  {
+    nBoxNumber += 2;
+  }
+#endif  
 	CtrlBuffer[nBoxNumber][0] = ID0;
 	CtrlBuffer[nBoxNumber][1] = ID1;
 	CtrlBuffer[nBoxNumber][2] = ID2;
@@ -854,6 +903,7 @@ LOCKERRORCODE BSP_LOCKCheckCtrlBuffer(void)
 	{
 		return state;
 	}
+
 	uint8_t i = 0;
 	for(i = 1; i < 23; i++)
 	{

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\SBoxPro.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SBoxPro.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Jun 29 18:02:17 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Jul 12 14:21:21 2018
 <BR><P>
 <H3>Maximum Stack Usage =          0 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -301,13 +301,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[4e]"></a>BSP_LOCKInit</STRONG> (Thumb, 258 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKInit))
+<P><STRONG><a name="[4e]"></a>BSP_LOCKInit</STRONG> (Thumb, 232 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKInit))
 <BR><BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[50]"></a>BSP_LOCKSendGoodsChangedMessage</STRONG> (Thumb, 96 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKSendGoodsChangedMessage))
+<P><STRONG><a name="[50]"></a>BSP_LOCKSendGoodsChangedMessage</STRONG> (Thumb, 102 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKSendGoodsChangedMessage))
 <BR><BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CanWriteData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -319,23 +319,23 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[53]"></a>BSP_LOCKUpdateOfGoodsState</STRONG> (Thumb, 684 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKUpdateOfGoodsState))
+<P><STRONG><a name="[53]"></a>BSP_LOCKUpdateOfGoodsState</STRONG> (Thumb, 628 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKUpdateOfGoodsState))
 <BR><BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[55]"></a>BSP_LOCKUpdateOfLockPinsState</STRONG> (Thumb, 682 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKUpdateOfLockPinsState))
+<P><STRONG><a name="[55]"></a>BSP_LOCKUpdateOfLockPinsState</STRONG> (Thumb, 634 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKUpdateOfLockPinsState))
 <BR><BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8d]"></a>BSP_LOCKWriteCtrlBuffer</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKWriteCtrlBuffer))
+<P><STRONG><a name="[8d]"></a>BSP_LOCKWriteCtrlBuffer</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKWriteCtrlBuffer))
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[4d]"></a>BSP_LOCKWriteCtrlPin</STRONG> (Thumb, 1292 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKWriteCtrlPin))
+<P><STRONG><a name="[4d]"></a>BSP_LOCKWriteCtrlPin</STRONG> (Thumb, 1306 bytes, Stack size 0 bytes, gpio.o(i.BSP_LOCKWriteCtrlPin))
 <BR><BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CanWriteData
 <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -444,7 +444,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[4f]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_WritePin))
-<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
+<BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKWriteCtrlPin
 <LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKInit
 </UL>
@@ -632,7 +633,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[83]"></a>MX_GPIO_Init</STRONG> (Thumb, 346 bytes, Stack size 0 bytes, gpio.o(i.MX_GPIO_Init))
+<P><STRONG><a name="[83]"></a>MX_GPIO_Init</STRONG> (Thumb, 358 bytes, Stack size 0 bytes, gpio.o(i.MX_GPIO_Init))
 <BR><BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
 </UL>
@@ -707,7 +708,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
 </UL>
 
-<P><STRONG><a name="[1e]"></a>USB_LP_CAN1_RX0_IRQHandler</STRONG> (Thumb, 88 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.USB_LP_CAN1_RX0_IRQHandler))
+<P><STRONG><a name="[1e]"></a>USB_LP_CAN1_RX0_IRQHandler</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.USB_LP_CAN1_RX0_IRQHandler))
 <BR><BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_Receive
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_IRQHandler
 </UL>
@@ -729,7 +730,7 @@ Global Symbols
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_CAN_Init
 </UL>
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 210 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 280 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_LOCKWriteCtrlBuffer
@@ -748,6 +749,7 @@ Global Symbols
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL><P>

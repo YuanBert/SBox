@@ -83,6 +83,7 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
    uint8_t IData[7] = {0};
+   uint8_t AckData[8] = {0};
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -139,61 +140,72 @@ int main(void)
 	if(1 == CanFlag)
 	{
 		CanFlag = 0;
-//		if(0x05 == CAN_DATA4)
-//		{  
-//			HAL_GPIO_WritePin(GPIOA , GPIO_PIN_5,GPIO_PIN_RESET);
-//			HAL_Delay(10);
-//			HAL_GPIO_WritePin(GPIOA , GPIO_PIN_5,GPIO_PIN_SET);
-//		}
-		//BSP_LOCKWriteCtrlPin(CAN_DATA4,CtrlOpen);
-		
-		BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
-		CAN_DATA0 = 0;
-		CAN_DATA1 = 0;
-		CAN_DATA2 = 0;
-		CAN_DATA3 = 0;
-		CAN_DATA4 = 0;
-		BSP_LOCKCheckCtrlBuffer();  
-	}  
-	
-	if(tim4Flag)
-	{
-		tim4Flag = 0;
-		BSP_LOCKUpdateOfGoodsState();
-		BSP_LOCKSendGoodsChangedMessage();
-		BSP_LOCKUpdateOfLockPinsState();
-		BSP_LOCKSendPinsChangedMessage();
-	}
-	
-	if(1 == tim5Flag)
-	{
-		tim5Flag = 0;
-//    IData[4] = 0xFF;
-//    IData[5] = 0xFF;
-//    IData[6] = 0xFF;
-//    CanWriteData(CANID, IData, 7);
-				/*  获取ID*/
-//		CANID = 0;
-//		if(GPIO_PIN_SET == GetAddrBit3Val)
-//		{
-//			CANID |= 0x08;
-//		}
-//		if(GPIO_PIN_SET == GetAddrBit2Val)
-//		{
-//			CANID |= 0x04;
-//		}
-//		if(GPIO_PIN_SET == GetAddrBit1Val)
-//		{
-//			CANID |= 0x02;
-//		}
-//		if(GPIO_PIN_SET == GetAddrBit0Val)
-//		{
-//			CANID |= 0x01;
-//		}
-	}  
+		if(0 == CAN_DATA0)
+    {
+      BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
+      CAN_DATA0 = 0;
+      CAN_DATA1 = 0;
+      CAN_DATA2 = 0;
+      CAN_DATA3 = 0;
+      CAN_DATA4 = 0;
+      BSP_LOCKCheckCtrlBuffer();
+    }
+    if(0xA2 == CAN_DATA0)
+    {
+        if(0x0A == CAN_DATA1)
+        {
+          HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_10,GPIO_PIN_SET);
+        }
+        else if(0x0B == CAN_DATA1)
+        {
+          HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_10,GPIO_PIN_RESET);
+        }
+        AckData[0] = 0xAA;
+        CanWriteData(CANID,AckData,1);
+        CAN_DATA0 = 0;
+        CAN_DATA1 = 0;
+        AckData[0] = 0;
+    }  
+    
+    if(tim4Flag)
+    {
+      tim4Flag = 0;
+      BSP_LOCKUpdateOfGoodsState();
+      BSP_LOCKSendGoodsChangedMessage();
+      BSP_LOCKUpdateOfLockPinsState();
+      BSP_LOCKSendPinsChangedMessage();
+    }
+    
+    if(1 == tim5Flag)
+    {
+      tim5Flag = 0;
+  //    IData[4] = 0xFF;
+  //    IData[5] = 0xFF;
+  //    IData[6] = 0xFF;
+  //    CanWriteData(CANID, IData, 7);
+          /*  获取ID*/
+  //		CANID = 0;
+  //		if(GPIO_PIN_SET == GetAddrBit3Val)
+  //		{
+  //			CANID |= 0x08;
+  //		}
+  //		if(GPIO_PIN_SET == GetAddrBit2Val)
+  //		{
+  //			CANID |= 0x04;
+  //		}
+  //		if(GPIO_PIN_SET == GetAddrBit1Val)
+  //		{
+  //			CANID |= 0x02;
+  //		}
+  //		if(GPIO_PIN_SET == GetAddrBit0Val)
+  //		{
+  //			CANID |= 0x01;
+  //		}
+    }  
   }
   /* USER CODE END 3 */
 
+  }
 }
 
 /**
@@ -202,7 +214,6 @@ int main(void)
   */
 void SystemClock_Config(void)
 {
-
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
 

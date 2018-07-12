@@ -215,11 +215,23 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 	{
 		/* 接收数据 */
 		CanFlag = 1;
+    if(0x00 == RxMessage.Data[0])
+    {
 		CAN_DATA0 = RxMessage.Data[0];
 		CAN_DATA1 = RxMessage.Data[1];
 		CAN_DATA2 = RxMessage.Data[2];
 		CAN_DATA3 = RxMessage.Data[3];
 		CAN_DATA4 = RxMessage.Data[4];
+    }
+    if(0xA2 == RxMessage.Data[0])
+    {
+      CAN_DATA0 = RxMessage.Data[0];
+      CAN_DATA1 = RxMessage.Data[1];
+    }
+    if(0xA0 == RxMessage.Data[0])
+    {
+      
+    }
 		//BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
 	}
 	__HAL_CAN_CLEAR_FLAG(&hcan,CAN_IT_FMP0);

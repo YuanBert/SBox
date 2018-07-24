@@ -942,18 +942,6 @@ void              ADC_StabilizationTime(uint32_t DelayUs);
 void              ADC_DMAConvCplt(DMA_HandleTypeDef *hdma);
 void              ADC_DMAHalfConvCplt(DMA_HandleTypeDef *hdma);
 void              ADC_DMAError(DMA_HandleTypeDef *hdma);
-/**
-  * @}
-  */ 
-
-
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-  */
 
 #ifdef __cplusplus
 }

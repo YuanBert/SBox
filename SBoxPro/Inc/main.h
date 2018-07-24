@@ -195,6 +195,8 @@
 #define LED2_GPIO_Port GPIOB
 #define LOCK_VibrationSensor_Pin GPIO_PIN_1
 #define LOCK_VibrationSensor_GPIO_Port GPIOE
+#define MQ_A0_Pin GPIO_PIN_0
+#define MQ_A0_GPIO_Port GPIOA
 
 /* ########################## Assert Selection ############################## */
 /**

@@ -530,6 +530,7 @@ LOCKERRORCODE BSP_LOCKSendPinsChangedMessage(void)
 	LOCKERRORCODE state = LOCK_OK;
 	uint8_t messageData[7];	
 	uint8_t i = 0;
+  uint8_t a = 0;
 	for(i = 1; i < 23; i++)
 	{
 		if(1 == LockPinsStateChangedBuffer[i][1])
@@ -538,7 +539,18 @@ LOCKERRORCODE BSP_LOCKSendPinsChangedMessage(void)
 			messageData[1] = 0;
 			messageData[2] = 0;
 			messageData[3] = 0;
-			messageData[4] = i;
+      a = i;
+#if 1 == NEWVERSION
+      if(a < 12)
+      {
+         a -= 1;
+      }
+      else
+      {
+        a -= 2;
+      }
+#endif
+			messageData[4] = a;
 			messageData[5] = LockPinsStateChangedBuffer[i][0];
 			messageData[6] = LockGoodsStateChangedBuffer[i][0];
 			CanWriteData(CANID,messageData,7);

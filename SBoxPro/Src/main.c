@@ -44,21 +44,25 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "adc.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
+#define MQ_ALARM_VALUE    1228
 uint8_t gCanBroadcastFrameFlag;
 uint8_t CanFlag;
 uint8_t CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4,CAN_DATA5,CAN_DATA6,CAN_DATA7;//数据
 uint8_t tim4Flag;
 uint16_t tim4Cnt;
+uint8_t MQALARMBUF[3] = {0xA3,0x00,0x00};
 
 uint8_t tim5Flag;
 uint16_t tim5Cnt;
+uint16_t MQ_AD_Value = 0;
+uint16_t Tempture_Value = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -107,7 +111,9 @@ int main(void)
   MX_CAN_Init();
   MX_TIM4_Init();
   MX_TIM5_Init();
-
+  MX_ADC1_Init();
+  MX_ADC2_Init();
+  
   /* Initialize interrupts */
   MX_NVIC_Init();
   /* USER CODE BEGIN 2 */
@@ -127,53 +133,70 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-    
-  if(1 == gCanBroadcastFrameFlag)
-  {
-    gCanBroadcastFrameFlag = 0;
-    IData[4] = 0xFF;
-    IData[5] = 0xFF;
-    IData[6] = 0xFF;
-    CanWriteData(CANID, IData, 7);
-  }
-  
-	if(1 == CanFlag)
-	{
-		CanFlag = 0;
-		if(0 == CAN_DATA0)
+     if(MQ_AD_Value > MQ_ALARM_VALUE)
+     {
+       MQALARMBUF[1] = MQ_AD_Value >> 8;
+       MQALARMBUF[2] = MQ_AD_Value;
+       CanWriteData(CANID, MQALARMBUF, 3);
+       MQ_AD_Value = 0;
+     }
+     /* 处理广播指令 */
+    if(1 == gCanBroadcastFrameFlag)
     {
-      BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
-      CAN_DATA0 = 0;
-      CAN_DATA1 = 0;
-      CAN_DATA2 = 0;
-      CAN_DATA3 = 0;
-      CAN_DATA4 = 0;
-      BSP_LOCKCheckCtrlBuffer();
+      gCanBroadcastFrameFlag = 0;
+      IData[4] = 0xFF;
+      IData[5] = 0xFF;
+      IData[6] = 0xFF;
+      CanWriteData(CANID, IData, 7);
     }
-    if(0xA2 == CAN_DATA0)
+  
+  /* 对接收到的数据进行处理 */
+    if(1 == CanFlag)
     {
-        if(0x0A == CAN_DATA1)
-        {
-          HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_10,GPIO_PIN_SET);
-        }
-        else if(0x0B == CAN_DATA1)
-        {
-          HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_10,GPIO_PIN_RESET);
-        }
-        AckData[0] = 0xAA;
-        CanWriteData(CANID,AckData,1);
+      CanFlag = 0;
+      if(0 == CAN_DATA0)
+      {
+        BSP_LOCKWriteCtrlBuffer(CAN_DATA0,CAN_DATA1,CAN_DATA2,CAN_DATA3,CAN_DATA4);
         CAN_DATA0 = 0;
         CAN_DATA1 = 0;
-        AckData[0] = 0;
+        CAN_DATA2 = 0;
+        CAN_DATA3 = 0;
+        CAN_DATA4 = 0;
+        BSP_LOCKCheckCtrlBuffer();
+      }
+      if(0xA2 == CAN_DATA0)
+      {
+          if(0x0A == CAN_DATA1)
+          {
+            HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_10,GPIO_PIN_SET);
+          }
+          else if(0x0B == CAN_DATA1)
+          {
+            HAL_GPIO_WritePin(GPIOE,GPIO_PIN_8|GPIO_PIN_10,GPIO_PIN_RESET);
+          }
+          AckData[0] = 0xAA;
+          CanWriteData(CANID,AckData,1);
+          CAN_DATA0 = 0;
+          CAN_DATA1 = 0;
+          AckData[0] = 0;
+      }
     }  
+   
+    /* 检测储物以及锁的状态时候有更新，并进行上报状态的改变 */
+    BSP_LOCKUpdateOfGoodsState();
+    BSP_LOCKSendGoodsChangedMessage();
+    BSP_LOCKUpdateOfLockPinsState();
+    BSP_LOCKSendPinsChangedMessage();
     
+    
+    /* 定时器4处理 */
     if(tim4Flag)
     {
       tim4Flag = 0;
-      BSP_LOCKUpdateOfGoodsState();
-      BSP_LOCKSendGoodsChangedMessage();
-      BSP_LOCKUpdateOfLockPinsState();
-      BSP_LOCKSendPinsChangedMessage();
+//      BSP_LOCKUpdateOfGoodsState();
+//      BSP_LOCKSendGoodsChangedMessage();
+//      BSP_LOCKUpdateOfLockPinsState();
+//      BSP_LOCKSendPinsChangedMessage();
     }
     
     if(1 == tim5Flag)
@@ -201,11 +224,34 @@ int main(void)
   //		{
   //			CANID |= 0x01;
   //		}
+      /* 获取烟雾报警器的数值 */
+//      MQALARMBUF[1] = MQ_AD_Value >> 8;
+//      MQALARMBUF[2] = MQ_AD_Value;
+//      CanWriteData(CANID, MQALARMBUF, 3);
+      /* 震动报警 */
+//      MQALARMBUF[0] = 0xA4;
+//      MQALARMBUF[1] = MQ_AD_Value >> 8;
+//      MQALARMBUF[2] = MQ_AD_Value;
+//      CanWriteData(CANID, MQALARMBUF, 3);
+      
+      HAL_ADC_Start(&hadc2);
+      HAL_ADC_PollForConversion(&hadc2,50);
+      if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc2),HAL_ADC_STATE_REG_EOC))
+      {
+        MQ_AD_Value = HAL_ADC_GetValue(&hadc2);
+      }
+      /* 温度传感器的数值 */
+      HAL_ADC_Start(&hadc1);
+      HAL_ADC_PollForConversion(&hadc1,50);
+      if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc1),HAL_ADC_STATE_REG_EOC))
+      {
+        Tempture_Value = HAL_ADC_GetValue(&hadc1);
+      }
+      
     }  
+  
   }
   /* USER CODE END 3 */
-
-  }
 }
 
 /**
@@ -216,7 +262,8 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
-
+  RCC_PeriphCLKInitTypeDef PeriphClkInit;
+  
     /**Initializes the CPU, AHB and APB busses clocks 
     */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
@@ -244,7 +291,26 @@ void SystemClock_Config(void)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
+    /**Initializes the CPU, AHB and APB busses clocks 
+    */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
     /**Configure the Systick interrupt time 
     */
   HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);

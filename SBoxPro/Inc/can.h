@@ -52,7 +52,8 @@
 #define GetAddrBit1Val		HAL_GPIO_ReadPin(LOCK_ADDR1_GPIO_Port, LOCK_ADDR1_Pin)
 #define GetAddrBit2Val		HAL_GPIO_ReadPin(LOCK_ADDR2_GPIO_Port, LOCK_ADDR2_Pin)
 #define GetAddrBit3Val		HAL_GPIO_ReadPin(LOCK_ADDR3_GPIO_Port, LOCK_ADDR3_Pin)
-
+#define GetAddrBit4Val		HAL_GPIO_ReadPin(LOCK_ADDR4_GPIO_Port, LOCK_ADDR4_Pin)
+#define GetAddrBit5Val		HAL_GPIO_ReadPin(LOCK_ADDR5_GPIO_Port, LOCK_ADDR5_Pin)
 /* USER CODE END Includes */
 
 extern CAN_HandleTypeDef hcan;

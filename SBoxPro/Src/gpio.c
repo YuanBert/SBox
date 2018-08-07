@@ -95,7 +95,7 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LOCK_CTRL2_Pin|LOCK_CTRL15_Pin|LOCK_CTRL16_Pin|LOCK_CTRL17_Pin 
-                          |LED1_Pin|LED2_Pin, GPIO_PIN_SET);
+                          |LED1_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, LOCK_CTRL18_Pin|LOCK_CTRL19_Pin|LOCK_CTRL20_Pin|LOCK_CTRL21_Pin, GPIO_PIN_SET);
@@ -103,7 +103,7 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pins : PEPin PEPin PEPin PEPin 
                            PEPin PEPin PEPin PEPin 
                            PEPin PEPin */
-  GPIO_InitStruct.Pin = LOCK_ADDR3_Pin|LOCK_ADDR2_Pin|LOCK_ADDR1_Pin|LOCK_ADDR0_Pin 
+  GPIO_InitStruct.Pin = LOCK_ADDR4_Pin|LOCK_ADDR3_Pin|LOCK_ADDR2_Pin|LOCK_ADDR1_Pin|LOCK_ADDR0_Pin 
                           |LOCK_STATE2_Pin|LOCK_STATE1_Pin|LOCK_STATE12_Pin|LOCK_STATE13_Pin 
                           |LOCK_STATE14_Pin|LOCK_VibrationSensor_Pin|GPIO_PIN_0;//|GPIO_PIN_8|GPIO_PIN_10;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
@@ -155,7 +155,7 @@ void MX_GPIO_Init(void)
                            PBPin */
   GPIO_InitStruct.Pin = LOCK_STATE3_Pin|LOCK_STATE15_Pin|LOCK_STATE16_Pin|LOCK_STATE17_Pin 
                           |LOCK_GOODS_5_Pin|LOCK_GOODS_4_Pin|LOCK_GOODS_3_Pin|LOCK_GOODS_2_Pin 
-                          |LOCK_GOODS_1_Pin | GPIO_PIN_9;
+                          |LOCK_GOODS_1_Pin | GPIO_PIN_9|LOCK_ADDR5_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
@@ -163,7 +163,7 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pins : PBPin PBPin PBPin PBPin 
                            PBPin PBPin */
   GPIO_InitStruct.Pin = LOCK_CTRL2_Pin|LOCK_CTRL15_Pin|LOCK_CTRL16_Pin|LOCK_CTRL17_Pin 
-                          |LED1_Pin|LED2_Pin;
+                          |LED1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);

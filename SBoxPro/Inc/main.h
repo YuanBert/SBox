@@ -49,6 +49,11 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define LOCK_ADDR5_Pin GPIO_PIN_9
+#define LOCK_ADDR5_GPIO_Port GPIOB
+#define LOCK_ADDR4_Pin GPIO_PIN_0
+#define LOCK_ADDR4_GPIO_Port GPIOE
+
 #define LOCK_ADDR3_Pin GPIO_PIN_2
 #define LOCK_ADDR3_GPIO_Port GPIOE
 #define LOCK_ADDR2_Pin GPIO_PIN_3
@@ -191,8 +196,6 @@
 #define LOCK_GOODS_1_GPIO_Port GPIOB
 #define LED1_Pin GPIO_PIN_8
 #define LED1_GPIO_Port GPIOB
-#define LED2_Pin GPIO_PIN_9
-#define LED2_GPIO_Port GPIOB
 #define LOCK_VibrationSensor_Pin GPIO_PIN_1
 #define LOCK_VibrationSensor_GPIO_Port GPIOE
 #define MQ_A0_Pin GPIO_PIN_0

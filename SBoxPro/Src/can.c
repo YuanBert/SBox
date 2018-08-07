@@ -136,6 +136,15 @@ void CANInit(void)
 	hcan.pRxMsg = &RxMessage;
 		/*  ªÒ»°ID*/
 	CANID = 0;
+  
+  if(GPIO_PIN_SET == GetAddrBit5Val)
+  {
+    CANID |= 0x20;
+  }
+  if(GPIO_PIN_SET == GetAddrBit5Val)
+  {
+    CANID |= 0x10;
+  }
 	if(GPIO_PIN_SET == GetAddrBit3Val)
 	{
 		CANID |= 0x08;
@@ -218,7 +227,7 @@ void CanWriteData(uint16_t ID, uint8_t* dataBufe, uint16_t dataLeng)
 	
 	hcan.pTxMsg = &TxMessage;
 	
-	HAL_CAN_Transmit(&hcan,0xFFFF);
+	HAL_CAN_Transmit(&hcan,0xFFFFFFFF);
 }
 
 /* USER CODE END 1 */
